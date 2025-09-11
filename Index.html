@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lamezia Cuore – Congresso</title>
+  <meta name="description" content="Lamezia Cuore: il battito della ricerca, il respiro della cura." />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <!-- favicon SVG data-uri corretta -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='24' font-size='24'%3E%E2%9D%A4%EF%B8%8F%3C/text%3E%3C/svg%3E">
+  <style>
+    :root{
+      --bg:#0f1115; --ink:#e8e8ea; --ink-muted:#b9bdc6;
+      --card:rgba(255,255,255,0.06); --stroke:#ffffff18;
+      --acc:#e53945; --gold:#d9b87a; --radius:22px; --shadow:0 20px 60px rgba(0,0,0,.35);
+      --hero:url('foto.jpeg'); /* metti foto.jpeg nella stessa cartella dell'index */
+    }
+    [data-theme="light"]{
+      --bg:#ffffff; --ink:#0e1016; --ink-muted:#475569;
+      --card:#ffffff; --stroke:#e5e7eb; --shadow:0 12px 26px rgba(0,0,0,.08);
+    }
+
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif;background:#0b0d12;color:var(--ink)}
+    a{text-decoration:none;color:inherit}
+    .container{max-width:1180px;margin:0 auto;padding:0 22px}
+
+    /* === TOPBAR (tema chiaro/scuro + prenotazioni esterne) === */
+    .topbar{position:sticky;top:0;z-index:60;background:linear-gradient(180deg,rgba(6,8,12,.75),rgba(6,8,12,.35));backdrop-filter:blur(8px);border-bottom:1px solid var(--stroke)}
+    .topbar-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px 0}
+    .switch{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--stroke);padding:8px 12px;border-radius:999px;cursor:pointer}
+    [data-theme="light"] body{background:#f6f7fb}
+
+    /* === HERO === */
+    header.hero{position:relative;min-height:88vh;overflow:hidden;display:flex;align-items:flex-end;justify-content:center;background:var(--bg)}
+    .hero-media{position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,9,13,.80),rgba(8,9,13,.95)),var(--hero) center/cover no-repeat;z-index:0}
+    [data-theme="light"] .hero-media{background:linear-gradient(180deg,rgba(255,255,255,.25),rgba(255,255,255,.85)),var(--hero) center/cover no-repeat}
+    .hero-inner{position:relative;z-index:2;padding:140px 0 90px;text-align:center}
+    h1{font-family:"Playfair Display",serif;font-size:clamp(36px,6vw,68px);margin:0;color:#fff}
+    [data-theme="light"] h1{color:#0e1016}
+    .subtitle{margin-top:10px;font-size:clamp(16px,2.5vw,22px);opacity:.9}
+    .chip{display:inline-block;margin:6px 8px;padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid var(--stroke)}
+    [data-theme="light"] .chip{background:#ffffff}
+    .cta{margin-top:22px}
+    .btn{padding:12px 18px;border-radius:12px;font-weight:700;box-shadow:var(--shadow)}
+    .btn.primary{background:linear-gradient(180deg,#ff5a5f,#e53945);color:#fff}
+    .btn.ghost{background:rgba(255,255,255,.08);border:1px solid var(--stroke);color:#fff}
+    [data-theme="light"] .btn.ghost{background:#ffffff;color:#0e1016}
+
+    /* Countdown */
+    .countdown{margin-top:20px;display:flex;justify-content:center;gap:12px}
+    .timebox{background:rgba(255,255,255,.06);padding:12px 14px;border-radius:14px;min-width:80px;border:1px solid var(--stroke)}
+    .timebox .num{font-size:24px;font-weight:800}
+    .timebox .lab{font-size:12px;opacity:.8}
+    [data-theme="light"] .timebox{background:#ffffff}
+
+    /* Sezioni */
+    section{padding:70px 0}
+    .section-title{font-family:"Playfair Display",serif;font-size:28px;color:#fff;margin-bottom:16px}
+    [data-theme="light"] .section-title{color:#0e1016}
+    .muted{color:var(--ink-muted)}
+
+    .card{background:var(--card);border:1px solid var(--stroke);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+    .card.pad{padding:24px}
+
+    /* Heart stroke loop (SVG) */
+    #heart-stroke path{stroke-dasharray:1000;stroke-dashoffset:1000;animation:draw 2.6s ease-in-out infinite}
+    @keyframes draw{to{stroke-dashoffset:0}}
+
+    /* Galleria */
+    .gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+    .gallery-grid img{width:100%;display:block;border-radius:12px}
+
+    /* --- Programma (stili) --- */
+    .program .day-switch{
+      display:flex; gap:10px; flex-wrap:wrap; margin:0 0 14px;
+    }
+    .program .pill{
+      cursor:pointer; border:1px solid var(--stroke);
+      padding:10px 14px; border-radius:999px;
+      background:rgba(255,255,255,.06);
+    }
+    [data-theme="light"] .program .pill{ background:#ffffff; }
+    .program .pill.active{
+      background:linear-gradient(180deg,#171a22,#141720);
+      border-color:#ffffff30; color:#fff;
+    }
+    [data-theme="light"] .program .pill.active{
+      background:#0e1016; color:#fff; border-color:#0e1016;
+    }
+    .program table{ width:100%; border-collapse:collapse; }
+    .program th, .program td{
+      padding:14px 16px; border-bottom:1px solid var(--stroke); text-align:left;
+    }
+    .program th{
+      background:linear-gradient(180deg,#171a22,#141720);
+      font-weight:800; color:#fff;
+    }
+    [data-theme="light"] .program th{
+      background:#0e1016; color:#fff;
+    }
+    .program .slot{ font-variant-numeric:tabular-nums; color:var(--gold); }
+    .program tr:last-child td{ border-bottom:none; }
+  </style>
+</head>
+<body>
+  <!-- TOPBAR con switch tema e prenotazioni esterne -->
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <div style="font-weight:700">Lamezia Cuore</div>
+      <div style="display:flex;gap:10px;align-items:center">
+        <div class="switch" id="themeToggle" role="button" aria-label="Cambia tema">🌓 Tema</div>
+        <a class="btn primary" style="text-decoration:none" href="https://symposiamc.com/congressi/" target="_blank" rel="noopener">Prenotazioni</a>
+      </div>
+    </div>
+  </div>
+
+  <header class="hero">
+    <div class="hero-media"></div>
+    <div class="hero-inner">
+      <svg id="heart-stroke" width="200" height="200" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M110 175 C 70 140, 30 110, 55 75 C 78 43, 120 60, 110 90 C 100 60, 142 43, 165 75 C 190 110, 150 140, 110 175 Z" stroke="var(--acc)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </svg>
+      <h1>Lamezia Cuore 2025</h1>
+      <p class="subtitle">Il battito della ricerca, il respiro della cura.</p>
+      <div>
+        <span class="chip">📅 6-7-8 Novembre 2025</span> <br>
+        <span class="chip">📍 T-Hotel · Lamezia Terme (CZ)</span>
+      </div>
+      <div class="cta">
+        <a class="btn primary" href="https://symposiamc.com/congressi/" target="_blank" rel="noopener">Iscriviti al convegno</a>
+        <a class="btn ghost" href="#programma">Consulta il programma</a>
+      </div>
+      <div class="countdown" id="countdown">
+        <div class="timebox"><div class="num" id="dd">--</div><div class="lab">Giorni</div></div>
+        <div class="timebox"><div class="num" id="hh">--</div><div class="lab">Ore</div></div>
+        <div class="timebox"><div class="num" id="mm">--</div><div class="lab">Minuti</div></div>
+        <div class="timebox"><div class="num" id="ss">--</div><div class="lab">Secondi</div></div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="programma" class="program">
+      <div class="container">
+        <h2 class="section-title">Programma</h2>
+
+        <!-- Pulsanti Giorno -->
+        <div class="day-switch" role="tablist" aria-label="Seleziona giorno">
+          <button class="pill active" data-day="1" role="tab" aria-selected="true">Giorno 1</button>
+          <button class="pill" data-day="2" role="tab" aria-selected="false">Giorno 2</button>
+          <button class="pill" data-day="3" role="tab" aria-selected="false">Giorno 3</button>
+        </div>
+
+        <!-- Tabella Giorno 1 -->
+        <div class="card" style="padding:0">
+          <table id="table-day-1">
+            <thead>
+              <tr><th style="width:120px">Orario</th><th>Sessione</th><th style="width:28%">Relatore</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="slot">09:00</td><td>Apertura lavori</td><td>--</td></tr>
+              <tr><td class="slot">09:30</td><td>Il battito del cuore</td><td>Dr. Roberto Ceravolo</td></tr>
+              <tr><td class="slot">10:30</td><td>Pausa caffè</td><td>—</td></tr>
+              <tr><td class="slot">11:00</td><td>Apertura sessione II</td><td>--</td></tr>
+            </tbody>
+          </table>
+
+          <!-- Tabella Giorno 2 -->
+          <table id="table-day-2" style="display:none">
+            <thead>
+              <tr><th style="width:120px">Orario</th><th>Sessione</th><th style="width:28%">Relatore</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="slot">09:00</td><td>Workshop tecnologie</td><td>Nome Cognome</td></tr>
+              <tr><td class="slot">10:30</td><td>Linee guida 2025</td><td>Nome Cognome</td></tr>
+              <tr><td class="slot">12:00</td><td>Discussione casi</td><td>Relatori vari</td></tr>
+            </tbody>
+          </table>
+
+          <!-- Tabella Giorno 3 -->
+          <table id="table-day-3" style="display:none">
+            <thead>
+              <tr><th style="width:120px">Orario</th><th>Sessione</th><th style="width:28%">Relatore</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="slot">09:00</td><td>Simposio giovani cardiologi</td><td>Nome Cognome</td></tr>
+              <tr><td class="slot">11:00</td><td>Tavola rotonda</td><td>Relatori vari</td></tr>
+              <tr><td class="slot">12:30</td><td>Chiusura lavori</td><td>Comitato</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="muted" style="margin-top:12px;text-align:center">
+          Scarica il programma completo in PDF →
+          <a id="programPdf" href="#" target="_blank" rel="noopener">Programma_Lamezia_Cuore.pdf</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- BOX FOTO (link a sito esterno) -->
+    <section id="gallery">
+      <div class="container">
+        <h2 class="section-title">Galleria foto ufficiali</h2>
+        <div class="card pad" style="max-width:380px;margin:0 auto">
+          <a href="https://example.com/foto" id="photosLink" target="_blank" rel="noopener"><img src="telesio1.webp" alt="Copertina foto" style="width:100%;height:auto;border-radius:12px"></a>
+          <p class="muted" style="margin:10px 0 0;text-align:center">Clicca per aprire la galleria sul sito esterno →</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- BOX ANNI PRECEDENTI -->
+    <section id="anni-precedenti">
+      <div class="container">
+        <h2 class="section-title">Edizioni precedenti</h2>
+        <div class="gallery-grid">
+          <a href="#anni-precedenti"  rel="noopener" class="card" style="padding:0;overflow:hidden"><img src="ed3.jpg" alt="Congresso 2024"></a>
+          <a href="#anni-precedenti"  rel="noopener" class="card" style="padding:0;overflow:hidden"><img src="ed2.jpg" alt="Congresso 2023"></a>
+          <a href="#anni-precedenti"  rel="noopener" class="card" style="padding:0;overflow:hidden"><img src="ed1.jpg" alt="Congresso 2022"></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <strong>Lamezia Cuore – Congresso</strong><br>
+      <span class="muted">© 2025 Comitato Organizzatore</span>
+    </div>
+  </footer>
+
+  <script>
+    // THEME SWITCH
+    const toggle = document.getElementById('themeToggle');
+    if (toggle) toggle.addEventListener('click',()=>{
+      const html = document.documentElement;
+      html.setAttribute('data-theme', html.getAttribute('data-theme')==='light' ? 'dark' : 'light');
+    });
+
+    // COUNTDOWN (1 novembre 2025, ore 09:00 Europe/Rome)
+    const eventDate = new Date('2025-11-01T09:00:00+01:00');
+    const $ = id => document.getElementById(id);
+    function tick(){
+      const now = new Date();
+      const diff = eventDate - now;
+      if(diff <= 0){ ['dd','hh','mm','ss'].forEach(id=>$(id).textContent='00'); return; }
+      const s = Math.floor(diff/1000);
+      const d = Math.floor(s/86400);
+      const h = Math.floor((s%86400)/3600);
+      const m = Math.floor((s%3600)/60);
+      const sec = s%60;
+      $('dd').textContent = String(d).padStart(2,'0');
+      $('hh').textContent = String(h).padStart(2,'0');
+      $('mm').textContent = String(m).padStart(2,'0');
+      $('ss').textContent = String(sec).padStart(2,'0');
+    }
+    tick();
+    setInterval(tick,1000);
+  </script>
+  <script>
+  // PROGRAMMA: switch tra i 3 giorni
+  const pills = document.querySelectorAll('.pill');
+  const tables = [
+    document.getElementById('table-day-1'),
+    document.getElementById('table-day-2'),
+    document.getElementById('table-day-3')
+  ];
+  pills.forEach((p,i)=>p.addEventListener('click',()=>{
+    pills.forEach(b=>{b.classList.remove('active');b.setAttribute('aria-selected','false');});
+    p.classList.add('active'); p.setAttribute('aria-selected','true');
+    tables.forEach((t,idx)=> t.style.display = idx===i ? '' : 'none');
+  }));
+  </script>
+
+</body>
+</html>

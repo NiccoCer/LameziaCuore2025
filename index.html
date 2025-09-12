@@ -136,40 +136,62 @@
       margin-top:20px;
       display:flex;
       justify-content:center;
-      gap:12px
+      gap:12px;
     }
     .timebox{
       background:rgba(255,255,255,.06);
       padding:12px 14px;
       border-radius:14px;
       min-width:80px;
-      border:1px solid var(--stroke)
+      border:1px solid var(--stroke);
     }
     .timebox .num{
       font-size:24px;
-      font-weight:800
+      font-weight:800;
     }
     .timebox .lab{
       font-size:12px;
-      opacity:.8
+      opacity:.8;
     }
     [data-theme="light"]
     .timebox{
-      background:#ffffff
+      background:#ffffff;
     }
 
     /* Sezioni */
     section{
-      padding:70px 0}
-    .section-title{font-family:"Playfair Display",serif;font-size:28px;color:#fff;margin-bottom:16px}
-    [data-theme="light"] .section-title{color:#0e1016}
-    .muted{color:var(--ink-muted)}
+      padding:70px 0
+    }
+    .section-title{
+      font-family:"Playfair Display",serif;
+      font-size:28px;color:#fff;
+      margin-bottom:16px;
+    }
+    [data-theme="light"]
+    .section-title{
+      color:#0e1016;
+    }
+    .muted{
+      color:var(--ink-muted);
+    }
 
-    .card{background:var(--card);border:1px solid var(--stroke);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
-    .card.pad{padding:24px}
+    .card{
+      background:var(--card);
+      border:1px solid var(--stroke);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .card.pad{
+      padding:24px;
+    }
 
     /* Heart stroke loop (SVG) */
-    #heart-stroke path{stroke-dasharray:1000;stroke-dashoffset:1000;animation:draw 2.6s ease-in-out infinite}
+    #heart-stroke path{
+      stroke-dasharray:1000;
+      stroke-dashoffset:1000;
+      animation:draw 2.6s ease-in-out infinite;
+    }
     @keyframes draw{to{stroke-dashoffset:0}}
 
     /* Galleria */
@@ -211,6 +233,42 @@
     .program tr:last-child td{
       border-bottom:none;
     }
+
+    /* Social section */
+    #social {
+      padding:70px 0;
+      text-align:center;
+    }
+    #social .social-links {
+      margin-top:30px;
+      display:flex;
+      justify-content:center;
+      gap:24px;
+      flex-wrap:wrap;
+    }
+    .social-btn {
+      width:60px;
+      height:60px;
+      border-radius:50%;
+      background:var(--card);
+      border:1px solid var(--stroke);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      transition:all .25s ease;
+      color:var(--ink);
+      box-shadow:var(--shadow);
+    }
+    .social-btn svg {
+      width:28px;
+      height:28px;
+    }
+    .social-btn:hover {
+      background:var(--acc);
+      color:#fff;
+      transform:scale(1.1);
+    }
+
   </style>
 </head>
 <body>
@@ -295,6 +353,34 @@
           Scarica il programma completo in PDF →
           <a id="programPdf" href="#" target="_blank" rel="noopener">Programma_Lamezia_Cuore.pdf</a>
         </p>
+      </div>
+    </section>
+
+    <!-- SOCIAL SECTION -->
+    <section id="social">
+      <div class="container">
+        <h2 class="section-title">Seguici sui social !</h2>
+        <p class="muted" style="text-align:center">Resta aggiornato su tutte le novità del congresso</p>
+        <div class="social-links">
+
+          <!-- Facebook (outline) -->
+          <a href="https://www.facebook.com/tuapagina" target="_blank" rel="noopener" aria-label="Facebook" class="social-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"></circle>
+                <path d="M13.5 8H12a2 2 0 0 0-2 2v2H8v2h2v4h2v-4h1.5l.5-2H12v-1.2c0-.4.3-.8.8-.8h1.7V8z"></path>
+            </svg>
+          </a>
+
+          <!-- Instagram (outline pulita) -->
+          <a href="https://www.instagram.com/tuapagina" target="_blank" rel="noopener" aria-label="Instagram" class="social-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="5" ry="5"></rect>
+              <circle cx="12" cy="12" r="3.5"></circle>
+              <circle cx="17" cy="7" r="1"></circle>
+            </svg>
+        </a>
+
+        </div>
       </div>
     </section>
 

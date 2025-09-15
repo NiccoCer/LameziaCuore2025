@@ -11,20 +11,19 @@
   <meta property="og:description" content="Il battito della ricerca, il respiro della cura. Vieni al congresso 6–8 Novembre 2025 a Lamezia Terme."/>
   <meta property="og:url" content="https://www.lameziacuore.it/"/>
   <meta property="og:type" content="website"/>
-  <meta property="og:image" content="<img src="foto.jpeg>"/>
+  <meta property="og:image" content="foto.jpeg"/>
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Lamezia Cuore 2025" />
   <meta name="twitter:description" content="Il battito della ricerca, il respiro della cura." />
-  <meta name="twitter:image" content="https://www.lameziacuore.it/preview.jpg" />
+  <meta name="twitter:image" content="preview.jpg" />
 
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
 
-  <!-- favicon -->
+  <!-- favicon SVG data-uri corretta -->
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='24' font-size='24'%3E%E2%9D%A4%EF%B8%8F%3C/text%3E%3C/svg%3E">
-
-    <style>
+  <style>
     :root{
       --bg:#0f1115;
       --ink:#e8e8ea;
@@ -269,6 +268,53 @@
       transform:scale(1.1);
     }
 
+
+    /* ===== PDF MODAL ===== */
+    .modal{
+      position:fixed; inset:0;
+      background:rgba(0,0,0,.6);
+      display:none; align-items:center; justify-content:center;
+      z-index:9999;
+      padding:20px;
+    }
+    .modal.open{ display:flex; }
+    .modal-box{
+      width:min(1000px, 96vw);
+      height:min(84vh, 900px);
+      background:var(--card);
+      border:1px solid var(--stroke);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      display:flex; flex-direction:column; overflow:hidden;
+    }
+    .modal-head{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:12px 16px; border-bottom:1px solid var(--stroke);
+      background:linear-gradient(180deg,#171a22,#141720);
+    }
+    [data-theme="light"] .modal-head{ background:#0e1016; color:#fff; }
+    .modal-title{
+      margin:0; font-family:"Playfair Display",serif; font-size:18px; color:#fff;
+    }
+    .modal-close{
+      background:transparent; border:1px solid var(--stroke);
+      color:#fff; border-radius:10px; padding:6px 10px; cursor:pointer;
+    }
+    .modal-close:hover{ background:var(--acc); border-color:transparent; }
+
+    .modal-body{ flex:1; }
+    #pdfFrame{
+      width:100%; height:100%; border:0; display:block; background:#0b0d12;
+    }
+
+    /* Bottoni titolo nella tabella */
+    .talk{
+      all:unset; cursor:pointer; color:var(--ink);
+      text-decoration:underline; text-decoration-color:#ffffff30;
+      text-underline-offset:3px;
+    }
+    .talk:hover{ color:var(--acc); text-decoration-color:var(--acc); }
+    .talk:focus-visible{ outline:2px solid var(--acc); outline-offset:2px; border-radius:4px; }
   </style>
 </head>
 <body>
@@ -313,41 +359,109 @@
         <div class="card" style="padding:0">
           <table id="table-day-1">
             <thead>
-              <tr><th style="width:120px">Orario</th><th>Titolo Relazione</th><th style="width:28%">Relatore</th></tr>
+              <tr>
+                <th style="width:120px">Orario</th>
+                <th>Titolo Relazione</th>
+                <th style="width:28%">Relatore</th>
+              </tr>
             </thead>
             <tbody>
-              <tr><td class="slot">09:00</td><td>Apertura lavori</td><td>--</td></tr>
-              <tr><td class="slot">09:30</td><td>Il battito del cuore</td><td>Dr. Roberto Ceravolo</td></tr>
-              <tr><td class="slot">10:30</td><td>Pausa caffè</td><td>—</td></tr>
-              <tr><td class="slot">11:00</td><td>Apertura sessione II</td><td>--</td></tr>
-              <tr><td class="slot">12:00</td><td>Apertura sessione III</td><td>--</td></tr>
-            </tbody>
-          </table>
+              <tr>
+                <td class="slot">09:00</td>
+                <td>
+                  <button class="talk" data-pdf="slides/apertura-lavori.pdf">Apertura lavori</button>
+                </td>
+                <td>—</td>
+              </tr>
 
-          <!-- Tabella Giorno 2 -->
-          <table id="table-day-2" style="display:none">
-            <thead>
-              <tr><th style="width:120px">Orario</th><th>Sessione</th><th style="width:28%">Relatore</th></tr>
-            </thead>
-            <tbody>
-              <tr><td class="slot">09:00</td><td>Workshop tecnologie</td><td>Nome Cognome</td></tr>
-              <tr><td class="slot">10:30</td><td>Linee guida 2025</td><td>Nome Cognome</td></tr>
-              <tr><td class="slot">12:00</td><td>Discussione casi</td><td>Relatori vari</td></tr>
-            </tbody>
-          </table>
+              <tr>
+                <td class="slot">09:30</td>
+                <td>
+                  <button class="talk" data-pdf="slides/il-battito-del-cuore.pdf">Il battito del cuore</button>
+                </td>
+                <td>Dr. Roberto Ceravolo</td>
+              </tr>
 
-          <!-- Tabella Giorno 3 -->
-          <table id="table-day-3" style="display:none">
-            <thead>
-              <tr><th style="width:120px">Orario</th><th>Sessione</th><th style="width:28%">Relatore</th></tr>
-            </thead>
-            <tbody>
-              <tr><td class="slot">09:00</td><td>Simposio giovani cardiologi</td><td>Nome Cognome</td></tr>
-              <tr><td class="slot">11:00</td><td>Tavola rotonda</td><td>Relatori vari</td></tr>
-              <tr><td class="slot">12:30</td><td>Chiusura lavori</td><td>Comitato</td></tr>
+              <tr>
+                <td class="slot">10:30</td>
+                <td>Pausa caffè</td>
+                <td>—</td>
+              </tr>
+
+              <tr>
+                <td class="slot">11:00</td>
+                <td>
+                  <button class="talk" data-pdf="slides/sessione-2.pdf">Apertura sessione II</button>
+                </td>
+                <td>—</td>
+              </tr>
+
+              <tr>
+                <td class="slot">12:00</td>
+                <td>
+                  <button class="talk" data-pdf="slides/sessione-3.pdf">Apertura sessione III</button>
+                </td>
+                <td>—</td>
+              </tr>
             </tbody>
           </table>
         </div>
+
+        <!-- Tabella Giorno 2 -->
+        <table id="table-day-2" style="display:none">
+          <thead>
+            <tr>
+              <th style="width:120px">Orario</th>
+              <th>Sessione</th>
+              <th style="width:28%">Relatore</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="slot">09:00</td>
+              <td><button class="talk" data-pdf="slides/workshop-tecnologie.pdf">Workshop tecnologie</button></td>
+              <td>Nome Cognome</td>
+            </tr>
+            <tr>
+              <td class="slot">10:30</td>
+              <td><button class="talk" data-pdf="slides/linee-guida-2025.pdf">Linee guida 2025</button></td>
+              <td>Nome Cognome</td>
+            </tr>
+            <tr>
+              <td class="slot">12:00</td>
+              <td><button class="talk" data-pdf="slides/discussione-casi.pdf">Discussione casi</button></td>
+              <td>Relatori vari</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Tabella Giorno 3 -->
+        <table id="table-day-3" style="display:none">
+          <thead>
+            <tr>
+              <th style="width:120px">Orario</th>
+              <th>Sessione</th>
+              <th style="width:28%">Relatore</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="slot">09:00</td>
+              <td><button class="talk" data-pdf="slides/simposio-giovani-cardiologi.pdf">Simposio giovani cardiologi</button></td>
+              <td>Nome Cognome</td>
+            </tr>
+            <tr>
+              <td class="slot">11:00</td>
+              <td><button class="talk" data-pdf="slides/tavola-rotonda.pdf">Tavola rotonda</button></td>
+              <td>Relatori vari</td>
+            </tr>
+            <tr>
+              <td class="slot">12:30</td>
+              <td><button class="talk" data-pdf="slides/chiusura-lavori.pdf">Chiusura lavori</button></td>
+              <td>Comitato</td>
+            </tr>
+          </tbody>
+        </table>
 
         <p class="muted" style="margin-top:12px;text-align:center">
           Scarica il programma completo in PDF →
@@ -367,7 +481,7 @@
           <a href="https://www.facebook.com/tuapagina" target="_blank" rel="noopener" aria-label="Facebook" class="social-btn">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <circle cx="12" cy="12" r="10"></circle>
-                <path d="M13.5 8H12a2 2 0 0 0-2 2v2H8v2h2v4h2v-4h1.5l.5-2H12v-1.2c0-.4.3-.8.8-.8h1.7V8z"></path>
+              <path d="M13.5 8H12a2 2 0 0 0-2 2v2H8v2h2v4h2v-4h1.5l.5-2H12v-1.2c0-.4.3-.8.8-.8h1.7V8z"></path>
             </svg>
           </a>
 
@@ -378,7 +492,7 @@
               <circle cx="12" cy="12" r="3.5"></circle>
               <circle cx="17" cy="7" r="1"></circle>
             </svg>
-        </a>
+          </a>
 
         </div>
       </div>
@@ -443,20 +557,79 @@
     tick();
     setInterval(tick,1000);
   </script>
+
   <script>
-  // PROGRAMMA: switch tra i 3 giorni
-  const pills = document.querySelectorAll('.pill');
-  const tables = [
-    document.getElementById('table-day-1'),
-    document.getElementById('table-day-2'),
-    document.getElementById('table-day-3')
-  ];
-  pills.forEach((p,i)=>p.addEventListener('click',()=>{
-    pills.forEach(b=>{b.classList.remove('active');b.setAttribute('aria-selected','false');});
-    p.classList.add('active'); p.setAttribute('aria-selected','true');
-    tables.forEach((t,idx)=> t.style.display = idx===i ? '' : 'none');
-  }));
+    // PROGRAMMA: switch tra i 3 giorni
+    const pills = document.querySelectorAll('.pill');
+    const tables = [
+      document.getElementById('table-day-1'),
+      document.getElementById('table-day-2'),
+      document.getElementById('table-day-3')
+    ];
+    pills.forEach((p,i)=>p.addEventListener('click',()=>{
+      pills.forEach(b=>{b.classList.remove('active');b.setAttribute('aria-selected','false');});
+      p.classList.add('active'); p.setAttribute('aria-selected','true');
+      tables.forEach((t,idx)=> t.style.display = idx===i ? '' : 'none');
+    }));
   </script>
+
+  <script>
+    // PDF Modal logic
+    (function(){
+      const modal = document.getElementById('pdfModal');
+      const frame = document.getElementById('pdfFrame');
+      const titleEl = document.getElementById('pdfTitle');
+      const closeBtn = modal.querySelector('.modal-close');
+
+      function openModal(title, pdfUrl){
+        // Per migliore compatibilità mobile puoi usare Google Viewer:
+        // const viewer = 'https://drive.google.com/viewerng/viewer?embedded=true&url=' + encodeURIComponent(pdfUrl);
+        // frame.src = viewer;
+        frame.src = pdfUrl + '#view=FitH'; // embed diretto
+        titleEl.textContent = title;
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden','false');
+        document.body.style.overflow = 'hidden';
+        closeBtn.focus();
+      }
+
+      function closeModal(){
+        modal.classList.remove('open');
+        modal.setAttribute('aria-hidden','true');
+        document.body.style.overflow = '';
+        frame.src = '';
+      }
+
+      // Delegation su tutti i bottoni .talk
+      document.addEventListener('click', (e)=>{
+        const btn = e.target.closest('.talk');
+        if(!btn) return;
+        const row = btn.closest('tr');
+        const time = row?.querySelector('.slot')?.textContent?.trim() || '';
+        const title = btn.textContent.trim() + (time ? ` — ${time}` : '');
+        const pdf = btn.getAttribute('data-pdf');
+        if(pdf) openModal(title, pdf);
+      });
+
+      // Chiudi con X, backdrop o ESC
+      closeBtn.addEventListener('click', closeModal);
+      modal.addEventListener('click', (e)=>{ if(e.target === modal) closeModal(); });
+      document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape' && modal.classList.contains('open')) closeModal(); });
+    })();
+  </script>
+
+  <!-- Modal PDF -->
+  <div id="pdfModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="pdfTitle">
+    <div class="modal-box" role="document">
+      <div class="modal-head">
+        <h3 id="pdfTitle" class="modal-title">Titolo relazione</h3>
+        <button class="modal-close" aria-label="Chiudi">✕</button>
+      </div>
+      <div class="modal-body">
+        <iframe id="pdfFrame" title="Slide PDF" loading="lazy" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
 
 </body>
 </html>

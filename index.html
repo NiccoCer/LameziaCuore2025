@@ -207,6 +207,17 @@
     }
     .program tr:last-child td{ border-bottom:none; }
 
+    .buttonpdfe{
+      text-align: center;
+      font-size: 17px;
+      padding:10px;
+      color: :#fff;
+      border: solid 1px;
+      border-radius: 24px;
+      background: red;
+      margin-top: 50px;
+    }
+
     /* Social section */
     #social { padding:70px 0; text-align:center; }
     #social .social-links {
@@ -311,42 +322,51 @@
               <tr><th style="width:120px">Orario</th><th>Titolo Relazione</th><th style="width:28%">Relatore</th></tr>
             </thead>
             <tbody>
+              <tr><td class="slot">--:--</td><td><button class="talk" data-pdf="slides/apertura-lavori.pdf">Programma non ancora pubblicato</button></td><td>—</td></tr>
+              <!-- Programma da compilare>
               <tr><td class="slot">09:00</td><td><button class="talk" data-pdf="slides/apertura-lavori.pdf">Apertura lavori</button></td><td>—</td></tr>
               <tr><td class="slot">09:30</td><td><button class="talk" data-pdf="slides/il-battito-del-cuore.pdf">Il battito del cuore</button></td><td>Dr. Roberto Ceravolo</td></tr>
               <tr><td class="slot">10:30</td><td>Pausa caffè</td><td>—</td></tr>
               <tr><td class="slot">11:00</td><td><button class="talk" data-pdf="slides/sessione-2.pdf">Apertura sessione II</button></td><td>—</td></tr>
               <tr><td class="slot">12:00</td><td><button class="talk" data-pdf="slides/sessione-3.pdf">Apertura sessione III</button></td><td>—</td></tr>
+              <!-->
             </tbody>
           </table>
 
           <!-- Tabella Giorno 2 -->
           <table id="table-day-2" style="display:none">
             <thead>
-              <tr><th style="width:120px">Orario</th><th>Sessione</th><th style="width:28%">Relatore</th></tr>
+              <tr><th style="width:120px">Orario</th><th>Titolo Relazione</th><th style="width:28%">Relatore</th></tr>
             </thead>
             <tbody>
+              <tr><td class="slot">--:--</td><td><button class="talk" data-pdf="slides/apertura-lavori.pdf">Programma non ancora pubblicato</button></td><td>—</td></tr>
+              <!-- Programma da compilare>
               <tr><td class="slot">09:00</td><td><button class="talk" data-pdf="slides/workshop-tecnologie.pdf">Workshop tecnologie</button></td><td>Nome Cognome</td></tr>
               <tr><td class="slot">10:30</td><td><button class="talk" data-pdf="slides/linee-guida-2025.pdf">Linee guida 2025</button></td><td>Nome Cognome</td></tr>
               <tr><td class="slot">12:00</td><td><button class="talk" data-pdf="slides/discussione-casi.pdf">Discussione casi</button></td><td>Relatori vari</td></tr>
+              <!-->
             </tbody>
           </table>
 
           <!-- Tabella Giorno 3 -->
           <table id="table-day-3" style="display:none">
             <thead>
-              <tr><th style="width:120px">Orario</th><th>Sessione</th><th style="width:28%">Relatore</th></tr>
+              <tr><th style="width:120px">Orario</th><th>Titolo Relazione</th><th style="width:28%">Relatore</th></tr>
             </thead>
             <tbody>
+              <tr><td class="slot">--:--</td><td><button class="talk" data-pdf="slides/apertura-lavori.pdf">Programma non ancora pubblicato</button></td><td>—</td></tr>
+              <!-- Programma da compilare>
               <tr><td class="slot">09:00</td><td><button class="talk" data-pdf="slides/simposio-giovani-cardiologi.pdf">Simposio giovani cardiologi</button></td><td>Nome Cognome</td></tr>
               <tr><td class="slot">11:00</td><td><button class="talk" data-pdf="slides/tavola-rotonda.pdf">Tavola rotonda</button></td><td>Relatori vari</td></tr>
               <tr><td class="slot">12:30</td><td><button class="talk" data-pdf="slides/chiusura-lavori.pdf">Chiusura lavori</button></td><td>Comitato</td></tr>
+              <!-->
             </tbody>
           </table>
         </div>
 
         <p class="muted" style="margin-top:12px;text-align:center">
-          Scarica il programma completo in PDF →
-          <a id="programPdf" href="#" target="_blank" rel="noopener">Programma_Lamezia_Cuore.pdf</a>
+
+          <a class="buttonpdfe"id="programPdf" href="#" target="_blank" rel="noopener">Scarica il programma completo.</a>
         </p>
       </div>
     </section>

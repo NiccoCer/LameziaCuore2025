@@ -2,589 +2,177 @@
 <html lang="it" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Lamezia Cuore – Congresso</title>
-  <meta name="description" content="Lamezia Cuore: il battito della ricerca, il respiro della cura." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lamezia Cuore 2025 // Biorithm Pro</title>
 
-  <!-- Open Graph / WhatsApp / Facebook -->
+  <meta name="description" content="Lamezia Cuore 2025: il battito della ricerca, il respiro della cura. Il futuro della cardiologia, oggi. Un congresso professionale e innovativo." />
   <meta property="og:title" content="Lamezia Cuore 2025" />
-  <meta property="og:description" content="Il battito della ricerca, il respiro della cura. Vieni al congresso 6–8 Novembre 2025 a Lamezia Terme."/>
   <meta property="og:url" content="https://www.lameziacuore.it/"/>
-  <meta property="og:type" content="website"/>
-  <!-- CORRETTO: solo URL, niente <img> -->
   <meta property="og:image" content="foto.jpeg"/>
-
-  <!-- Twitter Card -->
+  <meta property="og:type" content="website"/>
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Lamezia Cuore 2025" />
-  <meta name="twitter:description" content="Il battito della ricerca, il respiro della cura." />
-  <meta name="twitter:image" content="https://www.lameziacuore.it/preview.jpg" />
 
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
 
-  <!-- favicon -->
+  <link rel="stylesheet" href="style.css">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='24' font-size='24'%3E%E2%9D%A4%EF%B8%8F%3C/text%3E%3C/svg%3E">
 
-  <style>
-    :root{
-      --bg:#0f1115;
-      --ink:#e8e8ea;
-      --ink-muted:#b9bdc6;
-      --card:rgba(255,255,255,0.06);
-      --stroke:#ffffff18;
-      --acc:#e53945;
-      --gold:#d9b87a;
-      --radius:22px;
-      --shadow:0 20px 60px rgba(0,0,0,.35);
-      --hero:url('foto.jpeg');
-    }
-    [data-theme="light"]{
-      --bg:#ffffff; --ink:#0e1016; --ink-muted:#475569;
-      --card:#ffffff; --stroke:#e5e7eb; --shadow:0 12px 26px rgba(0,0,0,.08);
-    }
-
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif;
-      background:#0b0d12;
-      color:var(--ink);
-    }
-    a{text-decoration:none;color:inherit}
-    .container{
-      max-width:1180px;
-      margin:0 auto;
-      padding:0 22px;
-    }
-
-    /* === HERO === */
-    header.hero{
-      position:relative;
-      min-height:88vh;
-      overflow:hidden;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background:var(--bg);
-    }
-    .hero-media{
-      position:absolute;
-      inset:0;
-      background:linear-gradient(180deg,rgba(8,9,13,.80),rgba(8,9,13,.95)),var(--hero) center/cover no-repeat;z-index:0;
-    }
-    [data-theme="light"]
-    .hero-media{
-      background:linear-gradient(180deg,rgba(255,255,255,.25),rgba(255,255,255,.85)),var(--hero) center/cover no-repeat;
-    }
-    .hero-inner{
-      position:relative;
-      z-index:2;
-      padding: 40px 20px;
-      text-align:center;
-    }
-    h1{
-      font-family:"Playfair Display",serif;
-      font-size:clamp(36px,6vw,68px);
-      margin:0;color:#fff;
-    }
-    [data-theme="light"]
-    h1{ color:#0e1016; }
-    .subtitle{
-      margin-top:10px;
-      font-size:clamp(16px,2.5vw,22px);
-      opacity:.9;
-    }
-    .chip{
-      display:inline-block;
-      margin:6px 8px;
-      padding:8px 14px;
-      border-radius:999px;
-      background:rgba(255,255,255,.08);
-      border:1px solid var(--stroke);
-    }
-    [data-theme="light"] .chip{ background:#ffffff }
-    .cta{ margin-top:22px; }
-    .btn{
-      padding:12px 18px;
-      border-radius:12px;
-      font-weight:700;
-      box-shadow:var(--shadow);
-    }
-    .btn.primary{
-      background:linear-gradient(180deg,#ff5a5f,#e53945);
-      color:#fff;
-    }
-    .btn.ghost{
-      background:rgba(255,255,255,.08);
-      border:1px solid var(--stroke);
-      color:#fff;
-    }
-    [data-theme="light"] .btn.ghost{
-      background:#ffffff;
-      color:#0e1016;
-    }
-
-    /* Countdown */
-    .countdown{
-      margin-top:20px;
-      display:flex;
-      justify-content:center;
-      gap:12px;
-    }
-    .timebox{
-      background:rgba(255,255,255,.06);
-      padding:12px 14px;
-      border-radius:14px;
-      min-width:80px;
-      border:1px solid var(--stroke);
-    }
-    .timebox .num{ font-size:24px; font-weight:800 }
-    .timebox .lab{ font-size:12px; opacity:.8 }
-    [data-theme="light"] .timebox{ background:#ffffff }
-
-    /* Sezioni */
-    section{ padding:70px 0 }
-    .section-title{
-      font-family:"Playfair Display",serif;
-      font-size:28px;color:#fff;
-      margin-bottom:16px;
-    }
-    [data-theme="light"] .section-title{ color:#0e1016 }
-    .muted{ color:var(--ink-muted) }
-
-    .card{
-      background:var(--card);
-      border:1px solid var(--stroke);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      overflow:hidden;
-    }
-    .card.pad{ padding:24px }
-
-    /* Heart stroke loop (SVG) */
-    #heart-stroke path{
-      stroke-dasharray:1000;
-      stroke-dashoffset:1000;
-      animation:draw 2.6s ease-in-out infinite;
-    }
-    @keyframes draw{ to{stroke-dashoffset:0} }
-
-    /* Galleria */
-    .gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
-    .gallery-grid img{width:100%;display:block;border-radius:12px}
-
-    /* --- Programma (stili) --- */
-    .program .day-switch{
-      display:flex; gap:10px; flex-wrap:wrap; margin:0 0 14px;
-    }
-    .program .pill{
-      cursor:pointer; border:1px solid var(--stroke);
-      padding:10px 14px; border-radius:999px;
-      background:rgba(255,255,255,.06);
-    }
-    [data-theme="light"] .program .pill{ background:#ffffff; }
-    .program .pill.active{
-      background:linear-gradient(180deg,#171a22,#141720);
-      border-color:#ffffff30; color:#fff;
-    }
-    [data-theme="light"] .program .pill.active{
-      background:#0e1016; color:#fff; border-color:#0e1016;
-    }
-    .program table{ width:100%; border-collapse:collapse; }
-    .program th, .program td{
-      padding:14px 16px; border-bottom:1px solid var(--stroke); text-align:left;
-    }
-    .program th{
-      background:linear-gradient(180deg,#171a22,#141720);
-      font-weight:800; color:#fff;
-    }
-    [data-theme="light"] .program th{
-      background:#0e1016; color:#fff;
-    }
-    .program .slot{
-      font-variant-numeric:tabular-nums;
-      color:var(--gold);
-    }
-    .program tr:last-child td{ border-bottom:none; }
-
-    .buttonpdfe{
-      text-align: center;
-      font-face: bold;
-      font-size: 17px;
-      padding:10px;
-      color :#fff;
-      border: solid 0px;
-      border-radius: 14px;
-      background: #eb444d;
-      margin-top: 150px;
-    }
-
-    /* Social section */
-    #social { padding:70px 0; text-align:center; }
-    #social .social-links {
-      margin-top:30px; display:flex; justify-content:center; gap:24px; flex-wrap:wrap;
-    }
-    .social-btn {
-      width:60px; height:60px; border-radius:50%;
-      background:var(--card); border:1px solid var(--stroke);
-      display:flex; align-items:center; justify-content:center;
-      transition:all .25s ease; color:var(--ink); box-shadow:var(--shadow);
-    }
-    .social-btn svg { width:28px; height:28px; }
-    .social-btn:hover { background:var(--acc); color:#fff; transform:scale(1.1); }
-
-    /* ===== PDF MODAL ===== */
-    .modal{
-      position:fixed; inset:0;
-      background:rgba(0,0,0,.6);
-      display:none; align-items:center; justify-content:center;
-      z-index:9999; padding:20px;
-    }
-    .modal.open{ display:flex; }
-    .modal-box{
-      width:min(1000px, 96vw);
-      height:min(84vh, 900px);
-      background:var(--card);
-      border:1px solid var(--stroke);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      display:flex; flex-direction:column; overflow:hidden;
-    }
-    .modal-head{
-      display:flex; align-items:center; justify-content:space-between;
-      padding:12px 16px; border-bottom:1px solid var(--stroke);
-      background:linear-gradient(180deg,#171a22,#141720);
-    }
-    [data-theme="light"] .modal-head{ background:#0e1016; color:#fff; }
-    .modal-title{
-      margin:0; font-family:"Playfair Display",serif; font-size:18px; color:#fff;
-    }
-    .modal-close{
-      background:transparent; border:1px solid var(--stroke);
-      color:#fff; border-radius:10px; padding:6px 10px; cursor:pointer;
-    }
-    .modal-close:hover{ background:var(--acc); border-color:transparent; }
-    .modal-body{ flex:1; }
-    #pdfFrame{ width:100%; height:100%; border:0; display:block; background:#0b0d12; }
-
-    /* Galleria migliorata */
-.gallery-card {
-  padding:0;
-  overflow:hidden;
-  cursor:pointer;
-  border-radius:var(--radius);
-  transition:transform .3s ease, box-shadow .3s ease;
-}
-.gallery-card:hover {
-  transform:translateY(-6px);
-  box-shadow:0 14px 28px rgba(0,0,0,.45);
-}
-
-.gallery-img-wrap {
-  position:relative;
-  overflow:hidden;
-  border-radius:var(--radius);
-}
-.gallery-img-wrap img {
-  width:100%;
-  height:auto;
-  display:block;
-  transition:transform .5s ease;
-}
-.gallery-card:hover img {
-  transform:scale(1.08);
-}
-
-.gallery-overlay {
-  position:absolute;
-  inset:0;
-  background:rgba(0,0,0,.55);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#fff;
-  font-size:1.2rem;
-  font-weight:600;
-  opacity:0;
-  transition:opacity .35s ease;
-  border-radius:var(--radius);
-  letter-spacing:0.5px;
-}
-.gallery-card:hover .gallery-overlay {
-  opacity:1;
-}
-
-
-    /* Bottoni titolo nella tabella */
-    .talk{
-      all:unset; cursor:pointer; color:var(--ink);
-      text-decoration:underline; text-decoration-color:#ffffff30;
-      text-underline-offset:3px;
-    }
-    .talk:hover{ color:var(--acc); text-decoration-color:var(--acc); }
-    .talk:focus-visible{ outline:2px solid var(--acc); outline-offset:2px; border-radius:4px; }
-  </style>
+  <script src="script.js" defer></script>
 </head>
 <body>
-  <header class="hero">
-    <div class="hero-media"></div>
-    <div class="hero-inner">
-      <svg id="heart-stroke" width="200" height="200" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M110 175 C 70 140, 30 110, 55 75 C 78 43, 120 60, 110 90 C 100 60, 142 43, 165 75 C 190 110, 150 140, 110 175 Z" stroke="var(--acc)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-      </svg>
-      <h1>Lamezia Cuore 2025</h1>
-      <p class="subtitle"> Il battito della ricerca, il respiro della cura.</p>
-      <div>
-        <span class="chip">📅  6 - 7 - 8 Novembre 2025</span> <br>
-        <span class="chip">📍 T-Hotel · Lamezia Terme (CZ)</span>
+
+  <div class="background-grid"></div>
+
+  <header id="header">
+    <nav class="container">
+      <a href="#" class="logo">LC<strong>25</strong></a>
+      <div class="nav-menu">
+        <a href="#programma" class="nav-link">Programma</a>
+        <a href="#relatori" class="nav-link">Relatori</a>
+        <a href="#gallery" class="nav-link">Edizioni Precedenti</a>
+        <a href="#contatti" class="nav-link">Contatti</a>
       </div>
-      <div class="cta">
-        <a class="btn primary" href="https://symposiamc.com/congressi/" target="_blank" rel="noopener">Iscriviti al convegno</a><br><br><br>
-        <a class="btn ghost" href="#programma">Consulta il programma</a><br><br>
-      </div>
-      <div class="countdown" id="countdown">
-        <div class="timebox"><div class="num" id="dd">--</div><div class="lab">Giorni</div></div>
-        <div class="timebox"><div class="num" id="hh">--</div><div class="lab">Ore</div></div>
-        <div class="timebox"><div class="num" id="mm">--</div><div class="lab">Minuti</div></div>
-        <div class="timebox"><div class="num" id="ss">--</div><div class="lab">Secondi</div></div>
-      </div>
-    </div>
+    </nav>
   </header>
 
   <main>
+    <section class="hero">
+      <div class="hero-background"></div>
+      <div class="hero__content container">
+        <div class="hero__heart-container">
+          <div class="pulse-wave"></div>
+          <svg id="hero-heart" viewBox="0 0 220 220"><path d="M110 175 C 70 140, 30 110, 55 75 C 78 43, 120 60, 110 90 C 100 60, 142 43, 165 75 C 190 110, 150 140, 110 175 Z"/></svg>
+        </div>
+        <h1>Lamezia Cuore 2025</h1>
+        <p class="subtitle">Il battito della ricerca, il respiro della cura.</p>
+        <div class="countdown" id="countdown">
+          <div class="timebox"><div class="num" id="dd">--</div><div class="lab">Giorni</div></div>
+          <div class="timebox"><div class="num" id="hh">--</div><div class="lab">Ore</div></div>
+          <div class="timebox"><div class="num" id="mm">--</div><div class="lab">Minuti</div></div>
+          <div class="timebox"><div class="num" id="ss">--</div><div class="lab">Secondi</div></div>
+        </div>
+        <a class="btn btn--primary hero-cta" href="https://symposiamc.com/congressi/" target="_blank" rel="noopener">Iscriviti Ora</a>
+      </div>
+    </section>
+
     <section id="programma" class="program">
       <div class="container">
-        <h2 class="section-title">Programma</h2>
+        <h2 class="section-title">// Programma Scientifico</h2>
 
-        <!-- Pulsanti Giorno -->
-        <div class="day-switch" role="tablist" aria-label="Seleziona giorno">
-          <button class="pill active" data-day="1" role="tab" aria-selected="true">Giorno 1</button>
-          <button class="pill" data-day="2" role="tab" aria-selected="false">Giorno 2</button>
-          <button class="pill" data-day="3" role="tab" aria-selected="false">Giorno 3</button>
+        <div class="day-switch" id="day-switch">
+          <button class="pill active" data-day="1">Giorno 1</button>
+          <button class="pill" data-day="2">Giorno 2</button>
+          <button class="pill" data-day="3">Giorno 3</button>
         </div>
 
-        <!-- UNA SOLA CARD: dentro ci sono TUTTI e 3 i giorni -->
-        <div class="card" style="padding:0">
-          <!-- Tabella Giorno 1 -->
-          <table id="table-day-1">
-            <thead>
-              <tr><th style="width:120px">Orario</th><th>Titolo Relazione</th><th style="width:28%">Relatore</th></tr>
-            </thead>
-            <tbody>
-              <tr><td class="slot">--:--</td><td><button class="talk" data-pdf="slides/apertura-lavori.pdf">Programma non ancora pubblicato</button></td><td>—</td></tr>
-              <!-- Programma da compilare>
-              <tr><td class="slot">09:00</td><td><button class="talk" data-pdf="slides/apertura-lavori.pdf">Apertura lavori</button></td><td>—</td></tr>
-              <tr><td class="slot">09:30</td><td><button class="talk" data-pdf="slides/il-battito-del-cuore.pdf">Il battito del cuore</button></td><td>Dr. Roberto Ceravolo</td></tr>
-              <tr><td class="slot">10:30</td><td>Pausa caffè</td><td>—</td></tr>
-              <tr><td class="slot">11:00</td><td><button class="talk" data-pdf="slides/sessione-2.pdf">Apertura sessione II</button></td><td>—</td></tr>
-              <tr><td class="slot">12:00</td><td><button class="talk" data-pdf="slides/sessione-3.pdf">Apertura sessione III</button></td><td>—</td></tr>
-              <!-->
-            </tbody>
-          </table>
-
-          <!-- Tabella Giorno 2 -->
-          <table id="table-day-2" style="display:none">
-            <thead>
-              <tr><th style="width:120px">Orario</th><th>Titolo Relazione</th><th style="width:28%">Relatore</th></tr>
-            </thead>
-            <tbody>
-              <tr><td class="slot">--:--</td><td><button class="talk" data-pdf="slides/apertura-lavori.pdf">Programma non ancora pubblicato</button></td><td>—</td></tr>
-              <!-- Programma da compilare>
-              <tr><td class="slot">09:00</td><td><button class="talk" data-pdf="slides/workshop-tecnologie.pdf">Workshop tecnologie</button></td><td>Nome Cognome</td></tr>
-              <tr><td class="slot">10:30</td><td><button class="talk" data-pdf="slides/linee-guida-2025.pdf">Linee guida 2025</button></td><td>Nome Cognome</td></tr>
-              <tr><td class="slot">12:00</td><td><button class="talk" data-pdf="slides/discussione-casi.pdf">Discussione casi</button></td><td>Relatori vari</td></tr>
-              <!-->
-            </tbody>
-          </table>
-
-          <!-- Tabella Giorno 3 -->
-          <table id="table-day-3" style="display:none">
-            <thead>
-              <tr><th style="width:120px">Orario</th><th>Titolo Relazione</th><th style="width:28%">Relatore</th></tr>
-            </thead>
-            <tbody>
-              <tr><td class="slot">--:--</td><td><button class="talk" data-pdf="slides/apertura-lavori.pdf">Programma non ancora pubblicato</button></td><td>—</td></tr>
-              <!-- Programma da compilare>
-              <tr><td class="slot">09:00</td><td><button class="talk" data-pdf="slides/simposio-giovani-cardiologi.pdf">Simposio giovani cardiologi</button></td><td>Nome Cognome</td></tr>
-              <tr><td class="slot">11:00</td><td><button class="talk" data-pdf="slides/tavola-rotonda.pdf">Tavola rotonda</button></td><td>Relatori vari</td></tr>
-              <tr><td class="slot">12:30</td><td><button class="talk" data-pdf="slides/chiusura-lavori.pdf">Chiusura lavori</button></td><td>Comitato</td></tr>
-              <!-->
-            </tbody>
-          </table>
-        </div>
-
-        <p class="muted" style="margin-top:12px;text-align:center">
-            <br>
-          <a class="buttonpdfe"id="programPdf" href="#" target="_blank" rel="noopener">Scarica il programma completo.</a>
-        </p>
-      </div>
-    </section>
-
-    <!-- SOCIAL SECTION -->
-    <section id="social">
-      <div class="container">
-        <h2 class="section-title">Seguici sui social !</h2>
-        <p class="muted" style="text-align:center">Resta aggiornato su tutte le novità del congresso</p>
-        <div class="social-links">
-          <!-- Facebook (outline) -->
-          <a href="https://www.facebook.com/share/17Q85AG7KC/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook" class="social-btn">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <circle cx="12" cy="12" r="10"></circle>
-              <path d="M13.5 8H12a2 2 0 0 0-2 2v2H8v2h2v4h2v-4h1.5l.5-2H12v-1.2c0-.4.3-.8.8-.8h1.7V8z"></path>
-            </svg>
-          </a>
-          <!-- Instagram (outline pulita) -->
-          <a href="https://www.instagram.com/lamezia_cuore?igsh=MWI0bzBzdTN0YXV1eQ==" target="_blank" rel="noopener" aria-label="Instagram" class="social-btn">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <rect x="3" y="3" width="18" height="18" rx="5" ry="5"></rect>
-              <circle cx="12" cy="12" r="3.5"></circle>
-              <circle cx="17" cy="7" r="1"></circle>
-            </svg>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- BOX FOTO (link a sito esterno) -->
-    <section id="gallery">
-      <div class="container">
-        <h2 class="section-title">Galleria foto ufficiali</h2>
-
-        <div class="card gallery-card" style="max-width:420px;margin:0 auto">
-          <a href="https://example.com/foto" id="photosLink" target="_blank" rel="noopener" aria-label="Apri la galleria foto ufficiali">
-            <div class="gallery-img-wrap">
-              <img src="telesio1.webp" alt="Copertina galleria ufficiale" loading="lazy">
-              <div class="gallery-overlay">
-                 Apri la galleria
-              </div>
+        <div class="program__content interactive-card">
+          <div class="day-panel active" id="panel-day-1">
+            <div class="program-slot" data-pdf="pdf/slides-apertura.pdf" data-title="Apertura Lavori & Saluti Istituzionali">
+              <span class="slot-time">09:00</span>
+              <span class="slot-title">Apertura Lavori & Saluti Istituzionali</span>
+              <span class="slot-speaker">Comitato Organizzatore</span>
             </div>
-          </a>
+            <div class="program-slot" data-pdf="pdf/slides-ia.pdf" data-title="Intelligenza Artificiale in Cardiologia Diagnostica">
+              <span class="slot-time">10:00</span>
+              <span class="slot-title">Intelligenza Artificiale in Cardiologia Diagnostica</span>
+              <span class="slot-speaker">Prof. Mario Rossi</span>
+            </div>
+            <div class="program-slot">
+              <span class="slot-time">11:30</span>
+              <span class="slot-title">Coffee Break & Networking</span>
+              <span class="slot-speaker">—</span>
+            </div>
+          </div>
+
+          <div class="day-panel" id="panel-day-2">
+            <div class="program-slot" data-pdf="pdf/slides-terapie.pdf" data-title="Nuove Frontiere delle Terapie Interventistiche">
+              <span class="slot-time">09:30</span>
+              <span class="slot-title">Nuove Frontiere delle Terapie Interventistiche</span>
+              <span class="slot-speaker">Dott.ssa Laura Bianchi</span>
+            </div>
+             <div class="program-slot">
+              <span class="slot-time">11:00</span>
+              <span class="slot-title">Tavola Rotonda: Gestione del Paziente Cronico</span>
+              <span class="slot-speaker">Panel di Esperti</span>
+            </div>
+          </div>
+
+          <div class="day-panel" id="panel-day-3">
+             <div class="program-slot" data-pdf="pdf/slides-futuro.pdf" data-title="Prevenzione Cardiovascolare Personalizzata: Il Futuro">
+              <span class="slot-time">10:00</span>
+              <span class="slot-title">Prevenzione Cardiovascolare Personalizzata: Il Futuro</span>
+              <span class="slot-speaker">Dott. Carlo Verdi</span>
+            </div>
+            <div class="program-slot">
+              <span class="slot-time">12:00</span>
+              <span class="slot-title">Cerimonia di Chiusura e Ringraziamenti</span>
+              <span class="slot-speaker">Comitato Scientifico</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-
-    <!-- BOX ANNI PRECEDENTI -->
-    <section id="anni-precedenti">
-      <div class="container">
-        <h2 class="section-title">Edizioni precedenti</h2>
-        <div class="gallery-grid">
-          <a href="#anni-precedenti"  rel="noopener" class="card" style="padding:0;overflow:hidden"><img src="ed3.jpg" alt="Congresso 2024"></a>
-          <a href="#anni-precedenti"  rel="noopener" class="card" style="padding:0;overflow:hidden"><img src="ed2.jpg" alt="Congresso 2023"></a>
-          <a href="#anni-precedenti"  rel="noopener" class="card" style="padding:0;overflow:hidden"><img src="ed1.jpg" alt="Congresso 2022"></a>
+    <section id="relatori" class="speakers">
+        <div class="container">
+            <h2 class="section-title">// I Nostri Relatori</h2>
+            <div class="speakers__grid">
+                <div class="speaker-card interactive-card"><img src="https://i.pravatar.cc/300?img=68" alt="Foto del Prof. Mario Rossi"><h3>Prof. Mario Rossi</h3><p>Primario Cardiologia Interventistica, Ospedale X</p><p class="muted">Intelligenza Artificiale in Medicina</p></div>
+                <div class="speaker-card interactive-card"><img src="https://i.pravatar.cc/300?img=49" alt="Foto della Dott.ssa Laura Bianchi"><h3>Dott.ssa Laura Bianchi</h3><p>Ricercatrice Senior, Istituto di Cardiologia Y</p><p class="muted">Terapie Innovative e Farmacogenomica</p></div>
+                <div class="speaker-card interactive-card"><img src="https://i.pravatar.cc/300?img=56" alt="Foto del Dott. Carlo Verdi"><h3>Dott. Carlo Verdi</h3><p>Dir. U.O. Cardiologia, Clinica Z</p><p class="muted">Prevenzione e Stili di Vita</p></div>
+            </div>
         </div>
-      </div>
+    </section>
+
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <h2 class="section-title">// Il Quadro delle Edizioni Precedenti</h2>
+            <div class="gallery__grid">
+                <a href="ed3.jpg" class="gallery__item interactive-card"><img src="ed3.jpg" alt="Congresso 2024" loading="lazy"><div class="gallery__label">Edizione 2024</div></a>
+                <a href="ed2.jpg" class="gallery__item interactive-card"><img src="ed2.jpg" alt="Congresso 2023" loading="lazy"><div class="gallery__label">Edizione 2023</div></a>
+                <a href="ed1.jpg" class="gallery__item interactive-card"><img src="ed1.jpg" alt="Congresso 2022" loading="lazy"><div class="gallery__label">Edizione 2022</div></a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contatti" class="contact">
+        <div class="container">
+            <h2 class="section-title">// Contatti & Iscrizione</h2>
+            <div class="contact__actions">
+                <a class="btn btn--primary" href="https://symposiamc.com/congressi/" target="_blank" rel="noopener">Iscriviti al Convegno</a>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/share/17Q85AG7KC/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+                    <a href="https://www.instagram.com/lamezia_cuore?igsh=MWI0bzBzdTN0YXV1eQ==" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+                </div>
+            </div>
+        </div>
     </section>
   </main>
 
-  <footer>
+  <footer class="footer">
     <div class="container">
-      <strong>Lamezia Cuore – Congresso</strong><br>
-      <span class="muted">© 2025 Comitato Organizzatore</span>
+      <p>Lamezia Cuore © 2025 – Tutti i diritti riservati.</p>
     </div>
   </footer>
 
-  <script>
-    // THEME SWITCH
-    const toggle = document.getElementById('themeToggle');
-    if (toggle) toggle.addEventListener('click',()=>{
-      const html = document.documentElement;
-      html.setAttribute('data-theme', html.getAttribute('data-theme')==='light' ? 'dark' : 'light');
-    });
-
-    // COUNTDOWN (1 novembre 2025, ore 09:00 Europe/Rome)
-    const eventDate = new Date('2025-11-06T09:00:00+01:00');
-    const $ = id => document.getElementById(id);
-    function tick(){
-      const now = new Date();
-      const diff = eventDate - now;
-      if(diff <= 0){ ['dd','hh','mm','ss'].forEach(id=>$(id).textContent='00'); return; }
-      const s = Math.floor(diff/1000);
-      const d = Math.floor(s/86400);
-      const h = Math.floor((s%86400)/3600);
-      const m = Math.floor((s%3600)/60);
-      const sec = s%60;
-      $('dd').textContent = String(d).padStart(2,'0');
-      $('hh').textContent = String(h).padStart(2,'0');
-      $('mm').textContent = String(m).padStart(2,'0');
-      $('ss').textContent = String(sec).padStart(2,'0');
-    }
-    tick();
-    setInterval(tick,1000);
-  </script>
-
-  <script>
-    // PROGRAMMA: switch tra i 3 giorni
-    const pills = document.querySelectorAll('.pill');
-    const tables = [
-      document.getElementById('table-day-1'),
-      document.getElementById('table-day-2'),
-      document.getElementById('table-day-3')
-    ];
-    pills.forEach((p,i)=>p.addEventListener('click',()=>{
-      pills.forEach(b=>{b.classList.remove('active');b.setAttribute('aria-selected','false');});
-      p.classList.add('active'); p.setAttribute('aria-selected','true');
-      tables.forEach((t,idx)=> t.style.display = idx===i ? '' : 'none');
-    }));
-  </script>
-
-  <!-- Modal PDF -->
-  <div id="pdfModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="pdfTitle">
-    <div class="modal-box" role="document">
-      <div class="modal-head">
-        <h3 id="pdfTitle" class="modal-title">Titolo relazione</h3>
-        <button class="modal-close" aria-label="Chiudi">✕</button>
-      </div>
-      <div class="modal-body">
-        <iframe id="pdfFrame" title="Slide PDF" loading="lazy" allowfullscreen></iframe>
-      </div>
+  <div class="pdf-modal" id="pdfModal">
+    <div class="pdf-modal__box">
+        <div class="pdf-modal__header">
+            <h3 id="pdfTitle">Titolo Presentazione</h3>
+            <button class="pdf-modal__close" aria-label="Chiudi finestra">&times;</button>
+        </div>
+        <div class="pdf-modal__body">
+            <iframe id="pdfFrame" src="" frameborder="0" loading="lazy" allowfullscreen></iframe>
+        </div>
     </div>
   </div>
 
-  <script>
-    // PDF Modal logic
-    (function(){
-      const modal = document.getElementById('pdfModal');
-      const frame = document.getElementById('pdfFrame');
-      const titleEl = document.getElementById('pdfTitle');
-      const closeBtn = modal.querySelector('.modal-close');
-
-      function openModal(title, pdfUrl){
-        // In caso di problemi su mobile/Safari, puoi usare Google Viewer:
-        // const viewer = 'https://drive.google.com/viewerng/viewer?embedded=true&url=' + encodeURIComponent(pdfUrl);
-        // frame.src = viewer;
-        frame.src = pdfUrl + '#view=FitH';
-        titleEl.textContent = title;
-        modal.classList.add('open');
-        modal.setAttribute('aria-hidden','false');
-        document.body.style.overflow = 'hidden';
-        closeBtn.focus();
-      }
-
-      function closeModal(){
-        modal.classList.remove('open');
-        modal.setAttribute('aria-hidden','true');
-        document.body.style.overflow = '';
-        frame.src = '';
-      }
-
-      // apertura dal click sui titoli .talk
-      document.addEventListener('click', (e)=>{
-        const btn = e.target.closest('.talk');
-        if(!btn) return;
-        const row = btn.closest('tr');
-        const time = row?.querySelector('.slot')?.textContent?.trim() || '';
-        const title = btn.textContent.trim() + (time ? ` — ${time}` : '');
-        const pdf = btn.getAttribute('data-pdf');
-        if(pdf) openModal(title, pdf);
-      });
-
-      // chiusura
-      closeBtn.addEventListener('click', closeModal);
-      modal.addEventListener('click', (e)=>{ if(e.target === modal) closeModal(); });
-      document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape' && modal.classList.contains('open')) closeModal(); });
-    })();
-  </script>
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox__close" aria-label="Chiudi immagine">&times;</button>
+    <img src="" alt="Immagine ingrandita" class="lightbox__image">
+  </div>
 
 </body>
 </html>

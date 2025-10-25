@@ -324,3 +324,95 @@ nav { display: flex; justify-content: space-between; align-items: center; }
 
   .pdf-modal__header h3 { font-size: 0.9rem; }
 }
+/*
+==============================================
+--- STILI PAGINA ISCRIZIONE ---
+==============================================
+*/
+
+/* Spaziatura per i blocchi di contenuto */
+.content-block {
+  padding: 25px 30px;
+  margin-bottom: 40px;
+}
+.content-block h3 {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: var(--c-accent-secondary);
+}
+
+/* Wrapper responsive per video YouTube */
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* Proporzioni 16:9 */
+  height: 0;
+  overflow: hidden;
+  width: 100%;
+  border-radius: var(--radius);
+  border: 1px solid var(--c-stroke);
+}
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Stili per il form (riutilizzando le variabili del tema) */
+.iscrizione-form .form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.iscrizione-form .form-group {
+  display: flex;
+  flex-direction: column;
+}
+.iscrizione-form .form-group.full-width {
+  grid-column: 1 / -1; /* Occupa tutta la larghezza */
+}
+.iscrizione-form label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--c-ink-muted);
+  margin-bottom: 8px;
+}
+.iscrizione-form input[type="text"],
+.iscrizione-form input[type="email"],
+.iscrizione-form textarea {
+  background-color: var(--c-bg);
+  border: 1px solid var(--c-stroke);
+  border-radius: 8px;
+  padding: 12px 15px;
+  font-family: var(--font-primary);
+  color: var(--c-ink);
+  font-size: 1rem;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+.iscrizione-form input[type="text"]:focus,
+.iscrizione-form input[type="email"]:focus,
+.iscrizione-form textarea:focus {
+  outline: none;
+  border-color: var(--c-accent-secondary);
+  box-shadow: 0 0 10px rgba(0, 169, 224, 0.3);
+}
+.iscrizione-form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+/* Aggiunge spazio tra i due bottoni nell'hero della home */
+.hero-cta + .hero-cta {
+  margin-top: 15px;
+}
+
+/* Responsive per il form */
+@media (max-width: 768px) {
+  .iscrizione-form .form-grid {
+    grid-template-columns: 1fr; /* Una colonna su mobile */
+  }
+  .content-block {
+    padding: 20px;
+  }
+}

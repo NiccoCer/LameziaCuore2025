@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Iscrizione - Lamezia Cuore 2025</title>
+
+  <meta name="description" content="Iscriviti a Lamezia Cuore 2025. Compila il modulo per partecipare al congresso." />
+  <meta property="og:title" content="Iscrizione Lamezia Cuore 2025" />
+  <meta property="og:url" content="https://www.lameziacuore.it/iscrizione.html"/>
+  <meta property="og:image" content="foto.jpeg"/>
+  <meta property="og:type" content="website"/>
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.0/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='24' font-size='24'%3E%E2%9D%A4%EF%B8%8F%3C/text%3E%3C/svg%3E">
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <div class="background-grid"></div>
+
+  <header id="header">
+    <nav class="container">
+            <a href="index.html" class="logo">LC<strong>25</strong></a>
+      <div class="nav-menu">
+                <a href="index.html#programma" class="nav-link">Programma</a>
+        <a href="index.html#relatori" class="nav-link">Relatori</a>
+        <a href="index.html#gallery" class="nav-link">Edizioni Precedenti</a>
+        <a href="iscrizione.html" class="nav-link">Iscriviti al Corso</a>
+        <a href="index.html#contatti" class="nav-link">Contatti</a>
+      </div>
+      <button class="nav-menu-toggle" aria-label="Apri menu">
+        <div class="hamburger-icon">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+        <section id="iscrizione-page" class="container" style="padding-top: 80px; padding-bottom: 80px;">
+      <h2 class="section-title">Iscriviti al corso per cardiologi</h2>
+
+      <div class="interactive-card content-block">
+        <h3>Video presentazione corso</h3>
+        <div class="video-wrapper">
+      <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/LceCqidBmKM?si=nDk2tQLy6SB1H5M9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+
+     
+
+      <div class="interactive-card content-block">
+        <h3>Perché Partecipare</h3>
+        <p>Lamezia Cuore 2025 rappresenta un'opportunità unica di aggiornamento professionale e networking. Attraverso sessioni plenarie, workshop interattivi e l'analisi di casi clinici, esploreremo le frontiere della cardiologia moderna, dall'intelligenza artificiale alle nuove terapie interventistiche. Unisciti ai massimi esperti del settore per due giorni di formazione intensiva. Guarda il video della scorsa edizione per scoprire l'atmosfera del congresso.</p>
+      </div>
+
+
+      <div class="interactive-card content-block">
+        <h3>Modulo di Iscrizione</h3>
+        <p style="color: var(--c-ink-muted); margin-bottom: 30px;">Compila i campi sottostanti per inviare la tua richiesta di iscrizione. Riceverai una conferma via email.</p>
+
+        <form action="https://formsubmit.co/tua-email@esempio.com" method="POST" class="iscrizione-form">
+
+          <input type="hidden" name="_subject" value="Nuova Iscrizione Lamezia Cuore 2025">
+          <input type="text" name="_honey" style="display:none"> <input type="hidden" name="_next" value="httpsAi-page/grazie.html"> <div class="form-grid">
+            <div class="form-group">
+              <label for="nome">Nome</label>
+              <input type="text" id="nome" name="Nome" required>
+            </div>
+            <div class="form-group">
+              <label for="cognome">Cognome</label>
+              <input type="text" id="cognome" name="Cognome" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email Professionale</label>
+              <input type="email" id="email" name="Email" required>
+            </div>
+            <div class="form-group">
+              <label for="professione">Professione/Affiliazione</label>
+              <input type="text" id="professione" name="Professione" placeholder="Es. Cardiologo, Ospedale di...">
+            </div>
+            <div class="form-group full-width">
+              <label for="messaggio">Note (Opzionale)</label>
+              <textarea id="messaggio" name="Note" rows="4"></textarea>
+            </div>
+          </div>
+          <button type="submit" class="btn btn--primary" style="margin-top: 20px;">Invia Richiesta</button>
+        </form>
+      </div>
+
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>Lamezia Cuore © 2025 – Tutti i diritti riservati.</p>
+    </div>
+  </footer>
+
+    <div class="pdf-modal" id="pdfModal">
+    <div class="pdf-modal__box"><div class="pdf-modal__header"><h3 id="pdfTitle"></h3><button class="pdf-modal__close" aria-label="Chiudi finestra">&times;</button></div><div class="pdf-modal__body"><iframe id="pdfFrame" src="" frameborder="0"></iframe></div></div>
+  </div>
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox__close" aria-label="Chiudi immagine">&times;</button><img src="" alt="Immagine ingrandita" class="lightbox__image">
+  </div>
+
+</body>
+</html>

@@ -171,6 +171,7 @@ nav { display: flex; justify-content: space-between; align-items: center; }
   transition: background-color var(--transition);
 }
 .program-slot:last-child { border-bottom: none; }
+.bottone{font-family: var(--font-primary); text-align: center;}
 .program-slot:hover { background-color: rgba(229, 57, 69, 0.05); }
 .program-slot:hover .slot-title { color: var(--c-accent-primary); }
 .slot-time { font-weight: 700; color: var(--c-accent-secondary); }
@@ -202,7 +203,7 @@ nav { display: flex; justify-content: space-between; align-items: center; }
   cursor: pointer;
 }
 .btn--primary { background-color: var(--c-accent-primary); color: #fff; }
-.btn--btn--primary{display: flex; justify-content: center; align-items: center; margin-top: 35px;}
+.btn--btn--primary{display: flex; justify-content: center; align-items: center; margin-top: 35px; font-family: var(--font-primary)}
 .btn:hover { box-shadow: 0 0 25px rgba(229, 57, 69, 0.4); transform: translateY(-3px); }
 .social-links { display: flex; gap: 15px; }
 .social-links a {

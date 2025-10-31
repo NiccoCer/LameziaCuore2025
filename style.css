@@ -426,11 +426,3 @@ nav { display: flex; justify-content: space-between; align-items: center; }
     padding: 20px;
   }
 }
-.instagram{
-  display: flex;
-  margin-top: 25px;
-  justify-content: center;
-}
-.facebook{
-  display: flex;
-}

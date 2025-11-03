@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const countdownElem = document.getElementById('countdown');
     if (!countdownElem) return;
 
-    const eventDate = new Date('2025-11-06T09:00:00+01:00');
+    const eventDate = new Date('2025-11-06T14:45:00+01:00');
 
     const tick = () => {
       const now = new Date();

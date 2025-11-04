@@ -426,3 +426,95 @@ nav { display: flex; justify-content: space-between; align-items: center; }
     padding: 20px;
   }
 }
+/* Overlay del loader */
+.loader-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.loader-overlay.active {
+    display: flex;
+}
+
+/* Animazione cuore */
+.wrapper {
+    display: table;
+    margin: 0 auto;
+    position: relative;
+}
+
+.box {
+    width: 25px;
+    height: 25px;
+    float: left;
+    background: white;
+    margin: 0 2px 2px 0;
+    opacity: 0;
+    border-radius: 2px;
+    transform: translate(0, 0);
+}
+
+.clear {
+    clear: left;
+}
+
+.white {
+    background: none !important;
+}
+
+.box:not(.white) {
+    transition: all 0.3s ease;
+    animation: animation 4s infinite;
+}
+
+.box:not(.white):hover {
+    transform: scale(1.1, 1.1);
+    background: #be0000;
+}
+
+@keyframes animation {
+    0% {
+        opacity: 0;
+        transform: translate(0, -300px);
+    }
+    30% {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+    70% {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(0, 300px);
+    }
+}
+
+.delay-1 { animation-delay: 0.5s !important; }
+.delay-2 { animation-delay: 0.6s !important; }
+.delay-3 { animation-delay: 0.7s !important; }
+.delay-4 { animation-delay: 0.8s !important; }
+.delay-5 { animation-delay: 0.9s !important; }
+.delay-6 { animation-delay: 1s !important; }
+.delay-7 { animation-delay: 1.1s !important; }
+.delay-8 { animation-delay: 1.2s !important; }
+.delay-9 { animation-delay: 1.3s !important; }
+.delay-10 { animation-delay: 1.4s !important; }
+
+/* Testo di caricamento */
+.loading-text {
+    color: white;
+    font-size: 24px;
+    font-weight: 600;
+    margin-top: 30px;
+    text-align: center;
+}

@@ -147,3 +147,39 @@ document.addEventListener('DOMContentLoaded', () => {
   handleGalleryLightbox();
   handlePdfModal();
 });
+// Funzione per mostrare il loader
+function showLoader() {
+    document.getElementById('loaderOverlay').classList.add('active');
+}
+
+// Funzione per nascondere il loader
+function hideLoader() {
+    document.getElementById('loaderOverlay').classList.remove('active');
+}
+
+// Opzionale: chiudi il loader cliccando sull'overlay
+document.addEventListener('DOMContentLoaded', function() {
+    const loaderOverlay = document.getElementById('loaderOverlay');
+
+    loaderOverlay.addEventListener('click', function(e) {
+        if (e.target === loaderOverlay) {
+            hideLoader();
+        }
+    });
+});
+// Seleziona tutti i link con la classe 'link-con-loader'
+document.querySelectorAll('.link-con-loader').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+        e.preventDefault(); // Blocca la navigazione immediata
+
+        const destinazione = this.href; // Salva l'URL di destinazione
+
+        // Mostra il loader
+        document.getElementById('loaderOverlay').classList.add('active');
+
+        // Dopo 2 secondi, vai alla pagina
+        setTimeout(function() {
+            window.location.href = destinazione;
+        }, 2000);
+    });
+});

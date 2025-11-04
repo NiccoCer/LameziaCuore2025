@@ -27,6 +27,133 @@
 
   <script src="script.js" defer></script>
 </head>
+<!-- Overlay del loader (nascosto di default) -->
+<div class="loader-overlay" id="loaderOverlay">
+    <div>
+        <div class="wrapper">
+            <div class="box white"></div>
+            <div class="box delay-1"></div>
+            <div class="box delay-2"></div>
+            <div class="box delay-3"></div>
+            <div class="box white"></div>
+            <div class="box delay-4"></div>
+            <div class="box delay-5"></div>
+            <div class="box delay-6"></div>
+            <div class="box delay-7"></div>
+            <div class="box white"></div>
+            <div class="clear"></div>
+
+            <div class="box delay-1"></div>
+            <div class="box delay-2"></div>
+            <div class="box delay-3"></div>
+            <div class="box delay-4"></div>
+            <div class="box delay-5"></div>
+            <div class="box delay-6"></div>
+            <div class="box delay-7"></div>
+            <div class="box delay-8"></div>
+            <div class="box delay-9"></div>
+            <div class="box delay-10"></div>
+            <div class="clear"></div>
+
+            <div class="box delay-2"></div>
+            <div class="box delay-3"></div>
+            <div class="box delay-4"></div>
+            <div class="box delay-5"></div>
+            <div class="box delay-6"></div>
+            <div class="box delay-7"></div>
+            <div class="box delay-8"></div>
+            <div class="box delay-9"></div>
+            <div class="box delay-10"></div>
+            <div class="box delay-1"></div>
+            <div class="clear"></div>
+
+            <div class="box delay-3"></div>
+            <div class="box delay-4"></div>
+            <div class="box delay-5"></div>
+            <div class="box delay-6"></div>
+            <div class="box delay-7"></div>
+            <div class="box delay-8"></div>
+            <div class="box delay-9"></div>
+            <div class="box delay-10"></div>
+            <div class="box delay-1"></div>
+            <div class="box delay-2"></div>
+            <div class="clear"></div>
+
+            <div class="box delay-4"></div>
+            <div class="box delay-5"></div>
+            <div class="box delay-6"></div>
+            <div class="box delay-7"></div>
+            <div class="box delay-8"></div>
+            <div class="box delay-9"></div>
+            <div class="box delay-10"></div>
+            <div class="box delay-1"></div>
+            <div class="box delay-2"></div>
+            <div class="box delay-3"></div>
+            <div class="clear"></div>
+
+            <div class="box white"></div>
+            <div class="box delay-5"></div>
+            <div class="box delay-6"></div>
+            <div class="box delay-7"></div>
+            <div class="box delay-8"></div>
+            <div class="box delay-9"></div>
+            <div class="box delay-10"></div>
+            <div class="box delay-1"></div>
+            <div class="box delay-2"></div>
+            <div class="box white"></div>
+            <div class="clear"></div>
+
+            <div class="box white"></div>
+            <div class="box white"></div>
+            <div class="box delay-6"></div>
+            <div class="box delay-7"></div>
+            <div class="box delay-8"></div>
+            <div class="box delay-9"></div>
+            <div class="box delay-10"></div>
+            <div class="box delay-1"></div>
+            <div class="box white"></div>
+            <div class="box white"></div>
+            <div class="clear"></div>
+
+            <div class="box white"></div>
+            <div class="box white"></div>
+            <div class="box white"></div>
+            <div class="box delay-7"></div>
+            <div class="box delay-8"></div>
+            <div class="box delay-9"></div>
+            <div class="box delay-10"></div>
+            <div class="box white"></div>
+            <div class="box white"></div>
+            <div class="box white"></div>
+            <div class="clear"></div>
+
+            <div class="box white"></div>
+            <div class="box white"></div>
+            <div class="box white"></div>
+            <div class="box white"></div>
+            <div class="box delay-8"></div>
+            <div class="box delay-9"></div>
+            <div class="box white"></div>
+            <div class="box white"></div>
+            <div class="box white"></div>
+            <div class="box white"></div>
+            <div class="clear"></div>
+
+            <div class="box white"></div>
+            <div class="box white"></div>
+            <div class="box white"></div>
+            <div class="box white"></div>
+            <div class="box white"></div>
+            <div class="box delay-9"></div>
+            <div class="box white"></div>
+            <div class="box white"></div>
+            <div class="box white"></div>
+            <div class="box white"></div>
+            <div class="clear"></div>
+        </div>
+        <div class="loading-text">Caricamento in corso...</div>
+    </div>
+</div>
 <body>
   <div class="background-grid"></div>
 <header id="header">
@@ -61,9 +188,9 @@
           <div class="timebox"><div class="num" id="mm">--</div><div class="lab">Minuti</div></div>
           <div class="timebox"><div class="num" id="ss">--</div><div class="lab">Secondi</div></div>
         </div>
-        <a class="btn btn--primary hero-cta" href="https://symposiamc.com/modulo-prenotazione/" target="_blank" rel="noopener">Iscriviti al convegno</a><br><br><br>
-        <a class="btn btn--primary hero-cta" href="iscrizione.html">Scopri AVEIR Dual Sense di Abbott</a><br><br><br>
-        <!--<a class="btn btn--primary hero-cta" href="diretta.html">Segui la diretta streaming dell'evento</a>><!-->
+        <a class="btn btn--primary hero-cta link-con-loader" href="https://symposiamc.com/modulo-prenotazione/" target="_blank" rel="noopener">Iscriviti al convegno</a><br><br><br>
+        <a class="btn btn--primary hero-cta link-con-loader" href="iscrizione.html">Scopri AVEIR Dual Sense di Abbott</a><br><br><br>
+        <!--<a class="btn btn--primary hero-cta link-con-loader" href="diretta.html">Segui la diretta streaming dell'evento</a>><!-->
       </div>
     </section>
 
@@ -657,7 +784,7 @@
         </div>
       </div>
       <div class="btn--btn--primary">
-        <a class="btn btn--primary hero-cta" href="pdf/lamezia-cuore.pdf">Clicca quì per aprire la brochure</a>
+        <a class="btn btn--primary hero-cta link-con-loader" href="pdf/lamezia-cuore.pdf">Clicca quì per aprire la brochure</a>
       </div>
     </section>
     <!-- inizio commento >

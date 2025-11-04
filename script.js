@@ -183,3 +183,56 @@ document.querySelectorAll('.link-con-loader').forEach(function(link) {
         }, 2000);
     });
 });
+// Nascondi il loader quando la pagina si carica
+window.addEventListener('load', function() {
+    const loaderOverlay = document.getElementById('loaderOverlay');
+    if (loaderOverlay) {
+        loaderOverlay.classList.remove('active');
+    }
+});
+
+// Nascondi il loader quando torni indietro
+window.addEventListener('pageshow', function(event) {
+    if (event.persisted || performance.getEntriesByType('navigation')[0].type === 'back_forward') {
+        const loaderOverlay = document.getElementById('loaderOverlay');
+        if (loaderOverlay) {
+            loaderOverlay.classList.remove('active');
+        }
+    }
+});
+
+// Nascondi il loader prima di lasciare la pagina
+window.addEventListener('beforeunload', function() {
+    const loaderOverlay = document.getElementById('loaderOverlay');
+    if (loaderOverlay) {
+        loaderOverlay.classList.remove('active');
+    }
+});
+
+// Gestisci i link con classe 'link-con-loader'
+document.addEventListener('DOMContentLoaded', function() {
+    const loaderOverlay = document.getElementById('loaderOverlay');
+
+    if (!loaderOverlay) return;
+
+    // Chiudi il loader cliccando sull'overlay
+    loaderOverlay.addEventListener('click', function(e) {
+        if (e.target === loaderOverlay) {
+            loaderOverlay.classList.remove('active');
+        }
+    });
+
+    // Applica il loader ai link
+    document.querySelectorAll('.link-con-loader').forEach(function(link) {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const destinazione = this.href;
+
+            loaderOverlay.classList.add('active');
+
+            setTimeout(function() {
+                window.location.href = destinazione;
+            }, 2000);
+        });
+    });
+});

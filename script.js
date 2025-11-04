@@ -205,3 +205,10 @@ window.addEventListener('beforeunload', () => {
     loaderOverlay.classList.remove('active');
   }
 });
+// Quando mostri il loader
+loaderOverlay.classList.add('active');
+document.body.classList.add('loader-active');
+
+// Quando nascondi il loader
+loaderOverlay.classList.remove('active');
+document.body.classList.remove('loader-active');

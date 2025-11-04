@@ -354,20 +354,20 @@ nav { display: flex; justify-content: space-between; align-items: center; }
 
 /* Wrapper responsive per video YouTube */
 .video-wrapper {
-  position: relative;
-  padding-bottom: 56.25%; /* Proporzioni 16:9 */
-  height: 0;
-  overflow: hidden;
-  width: 100%;
+  position: relative;
+  padding-bottom: 56.25%; /* Proporzioni 16:9 */
+  height: 0;
+  overflow: hidden;
+  width: 100%;
   border-radius: var(--radius);
   border: 1px solid var(--c-stroke);
 }
 .video-wrapper iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   border: 0;
 }
 
@@ -416,7 +416,7 @@ nav { display: flex; justify-content: space-between; align-items: center; }
 }
 /* Aggiunge spazio tra i due bottoni nell'hero della home */
 .hero-cta + .hero-cta {
-  margin-top: 15px;
+  margin-top: 15px;
 }
 
 /* Responsive per il form */
@@ -428,14 +428,7 @@ nav { display: flex; justify-content: space-between; align-items: center; }
     padding: 20px;
   }
 }
-
-/*
-==============================================
---- LOADER CON CUORE ---
-==============================================
-*/
-
-/* Overlay del loader - VERSIONE CORRETTA PER MOBILE */
+/* Overlay del loader */
 .loader-overlay {
     display: none;
     position: fixed;
@@ -443,27 +436,21 @@ nav { display: flex; justify-content: space-between; align-items: center; }
     left: 0;
     right: 0;
     bottom: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     min-height: 100vh;
-    min-height: -webkit-fill-available;
-    background: rgba(10, 13, 24, 0.98);
+    min-height: 100dvh; /* Dynamic viewport height per mobile */
+    background: rgba(26, 35, 50, 0.98);
     justify-content: center;
     align-items: center;
     z-index: 9999;
     overflow: hidden;
 }
 
+
+
 .loader-overlay.active {
     display: flex;
-}
-
-/* Blocca lo scroll quando il loader è attivo */
-body.loader-active {
-    overflow: hidden !important;
-    position: fixed;
-    width: 100%;
-    height: 100%;
 }
 
 /* Animazione cuore */
@@ -484,6 +471,7 @@ body.loader-active {
     transform: translate(0, 0);
 }
 
+
 .clear {
     clear: left;
 }
@@ -501,6 +489,7 @@ body.loader-active {
     transform: scale(1.1, 1.1);
     background: #ff2a2a;
 }
+
 
 @keyframes animation {
     0% {

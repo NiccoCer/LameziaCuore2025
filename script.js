@@ -140,99 +140,68 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
+  // ========== GESTIONE LOADER ==========
+  const handleLoader = () => {
+    const loaderOverlay = document.getElementById('loaderOverlay');
+    if (!loaderOverlay) return;
+
+    // Chiudi il loader cliccando sull'overlay
+    loaderOverlay.addEventListener('click', (e) => {
+      if (e.target === loaderOverlay) {
+        loaderOverlay.classList.remove('active');
+      }
+    });
+
+    // Applica il loader ai link con classe 'link-con-loader'
+    document.querySelectorAll('.link-con-loader').forEach((link) => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const destinazione = link.href;
+
+        // Mostra il loader
+        loaderOverlay.classList.add('active');
+
+        // Vai alla pagina dopo 2 secondi
+        setTimeout(() => {
+          window.location.href = destinazione;
+        }, 3000);
+      });
+    });
+  };
+
   // Inizializza tutte le funzionalità
   handleNavbar();
   handleCountdown();
   handleProgramTabs();
   handleGalleryLightbox();
   handlePdfModal();
+  handleLoader(); // <-- Aggiunto qui
 });
-// Funzione per mostrare il loader
-function showLoader() {
-    document.getElementById('loaderOverlay').classList.add('active');
-}
 
-// Funzione per nascondere il loader
-function hideLoader() {
-    document.getElementById('loaderOverlay').classList.remove('active');
-}
+// ========== EVENT LISTENERS PER IL LOADER (fuori da DOMContentLoaded) ==========
 
-// Opzionale: chiudi il loader cliccando sull'overlay
-document.addEventListener('DOMContentLoaded', function() {
-    const loaderOverlay = document.getElementById('loaderOverlay');
-
-    loaderOverlay.addEventListener('click', function(e) {
-        if (e.target === loaderOverlay) {
-            hideLoader();
-        }
-    });
-});
-// Seleziona tutti i link con la classe 'link-con-loader'
-document.querySelectorAll('.link-con-loader').forEach(function(link) {
-    link.addEventListener('click', function(e) {
-        e.preventDefault(); // Blocca la navigazione immediata
-
-        const destinazione = this.href; // Salva l'URL di destinazione
-
-        // Mostra il loader
-        document.getElementById('loaderOverlay').classList.add('active');
-
-        // Dopo 2 secondi, vai alla pagina
-        setTimeout(function() {
-            window.location.href = destinazione;
-        }, 2000);
-    });
-});
 // Nascondi il loader quando la pagina si carica
-window.addEventListener('load', function() {
-    const loaderOverlay = document.getElementById('loaderOverlay');
-    if (loaderOverlay) {
-        loaderOverlay.classList.remove('active');
-    }
+window.addEventListener('load', () => {
+  const loaderOverlay = document.getElementById('loaderOverlay');
+  if (loaderOverlay) {
+    loaderOverlay.classList.remove('active');
+  }
 });
 
 // Nascondi il loader quando torni indietro
-window.addEventListener('pageshow', function(event) {
-    if (event.persisted || performance.getEntriesByType('navigation')[0].type === 'back_forward') {
-        const loaderOverlay = document.getElementById('loaderOverlay');
-        if (loaderOverlay) {
-            loaderOverlay.classList.remove('active');
-        }
+window.addEventListener('pageshow', (event) => {
+  if (event.persisted || performance.getEntriesByType('navigation')[0].type === 'back_forward') {
+    const loaderOverlay = document.getElementById('loaderOverlay');
+    if (loaderOverlay) {
+      loaderOverlay.classList.remove('active');
     }
+  }
 });
 
 // Nascondi il loader prima di lasciare la pagina
-window.addEventListener('beforeunload', function() {
-    const loaderOverlay = document.getElementById('loaderOverlay');
-    if (loaderOverlay) {
-        loaderOverlay.classList.remove('active');
-    }
-});
-
-// Gestisci i link con classe 'link-con-loader'
-document.addEventListener('DOMContentLoaded', function() {
-    const loaderOverlay = document.getElementById('loaderOverlay');
-
-    if (!loaderOverlay) return;
-
-    // Chiudi il loader cliccando sull'overlay
-    loaderOverlay.addEventListener('click', function(e) {
-        if (e.target === loaderOverlay) {
-            loaderOverlay.classList.remove('active');
-        }
-    });
-
-    // Applica il loader ai link
-    document.querySelectorAll('.link-con-loader').forEach(function(link) {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const destinazione = this.href;
-
-            loaderOverlay.classList.add('active');
-
-            setTimeout(function() {
-                window.location.href = destinazione;
-            }, 2000);
-        });
-    });
+window.addEventListener('beforeunload', () => {
+  const loaderOverlay = document.getElementById('loaderOverlay');
+  if (loaderOverlay) {
+    loaderOverlay.classList.remove('active');
+  }
 });

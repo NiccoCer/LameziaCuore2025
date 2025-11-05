@@ -1,40 +1,169 @@
 <!DOCTYPE html>
 <html lang="it" data-theme="dark">
 <head>
-  <meta charset="UTF-8">
-    <meta name="description" content="Segui in diretta streaming il congresso Lamezia Cuore 2025. Il futuro della cardiologia, oggi.">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>Diretta Streaming - Lamezia Cuore</title>
+  <meta charset="UTF-8">
+  <meta name="description" content="Diretta - Lamezia Cuore 2025: il battito della ricerca, il respiro della cura. Il futuro della cardiologia, oggi. Un congresso professionale e innovativo.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="favicon.ico">
+  <title>Diretta - Lamezia Cuore</title>
 
-    <meta property="og:title" content="Diretta Streaming - Lamezia Cuore 2025" />
-  <meta property="og:url" content="https://www.lameziacuore.it/diretta.html"/>   <meta property="og:image" content="foto.jpeg"/>
-  <meta property="og:type" content="website"/>
-  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="description" content="Diretta - Lamezia Cuore 2025: il battito della ricerca, il respiro della cura. Il futuro della cardiologia, oggi. Un congresso professionale e innovativo." />
+  <meta property="og:title" content="Diretta - Lamezia Cuore 2025" />
+  <meta property="og:url" content="https://www.lameziacuore.it/"/>
+  <meta property="og:image" content="foto.jpeg"/>
+  <meta property="og:type" content="website"/>
+  <meta name="twitter:card" content="summary_large_image" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="shortcut icon" href="/favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-  <link rel="manifest" href="/site.webmanifest" />
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
 
     <script src="script.js" defer></script>
 </head>
+<!-- Overlay del loader (nascosto di default) -->
+<div class="loader-overlay" id="loaderOverlay">
+    <div>
+        <div class="wrapper">
+            <div class="box white"></div>
+            <div class="box delay-1"></div>
+            <div class="box delay-2"></div>
+            <div class="box delay-3"></div>
+            <div class="box white"></div>
+            <div class="box delay-4"></div>
+            <div class="box delay-5"></div>
+            <div class="box delay-6"></div>
+            <div class="box delay-7"></div>
+            <div class="box white"></div>
+            <div class="clear"></div>
+
+            <div class="box delay-1"></div>
+            <div class="box delay-2"></div>
+            <div class="box delay-3"></div>
+            <div class="box delay-4"></div>
+            <div class="box delay-5"></div>
+            <div class="box delay-6"></div>
+            <div class="box delay-7"></div>
+            <div class="box delay-8"></div>
+            <div class="box delay-9"></div>
+            <div class="box delay-10"></div>
+            <div class="clear"></div>
+
+            <div class="box delay-2"></div>
+            <div class="box delay-3"></div>
+            <div class="box delay-4"></div>
+            <div class="box delay-5"></div>
+            <div class="box delay-6"></div>
+            <div class="box delay-7"></div>
+            <div class="box delay-8"></div>
+            <div class="box delay-9"></div>
+            <div class="box delay-10"></div>
+            <div class="box delay-1"></div>
+            <div class="clear"></div>
+
+            <div class="box delay-3"></div>
+            <div class="box delay-4"></div>
+            <div class="box delay-5"></div>
+            <div class="box delay-6"></div>
+            <div class="box delay-7"></div>
+            <div class="box delay-8"></div>
+            <div class="box delay-9"></div>
+            <div class="box delay-10"></div>
+            <div class="box delay-1"></div>
+            <div class="box delay-2"></div>
+            <div class="clear"></div>
+
+            <div class="box delay-4"></div>
+            <div class="box delay-5"></div>
+            <div class="box delay-6"></div>
+            <div class="box delay-7"></div>
+            <div class="box delay-8"></div>
+            <div class="box delay-9"></div>
+            <div class="box delay-10"></div>
+            <div class="box delay-1"></div>
+            <div class="box delay-2"></div>
+            <div class="box delay-3"></div>
+            <div class="clear"></div>
+
+            <div class="box white"></div>
+            <div class="box delay-5"></div>
+            <div class="box delay-6"></div>
+            <div class="box delay-7"></div>
+            <div class="box delay-8"></div>
+            <div class="box delay-9"></div>
+            <div class="box delay-10"></div>
+            <div class="box delay-1"></div>
+            <div class="box delay-2"></div>
+            <div class="box white"></div>
+            <div class="clear"></div>
+
+            <div class="box white"></div>
+            <div class="box white"></div>
+            <div class="box delay-6"></div>
+            <div class="box delay-7"></div>
+            <div class="box delay-8"></div>
+            <div class="box delay-9"></div>
+            <div class="box delay-10"></div>
+            <div class="box delay-1"></div>
+            <div class="box white"></div>
+            <div class="box white"></div>
+            <div class="clear"></div>
+
+            <div class="box white"></div>
+            <div class="box white"></div>
+            <div class="box white"></div>
+            <div class="box delay-7"></div>
+            <div class="box delay-8"></div>
+            <div class="box delay-9"></div>
+            <div class="box delay-10"></div>
+            <div class="box white"></div>
+            <div class="box white"></div>
+            <div class="box white"></div>
+            <div class="clear"></div>
+
+            <div class="box white"></div>
+            <div class="box white"></div>
+            <div class="box white"></div>
+            <div class="box white"></div>
+            <div class="box delay-8"></div>
+            <div class="box delay-9"></div>
+            <div class="box white"></div>
+            <div class="box white"></div>
+            <div class="box white"></div>
+            <div class="box white"></div>
+            <div class="clear"></div>
+
+            <div class="box white"></div>
+            <div class="box white"></div>
+            <div class="box white"></div>
+            <div class="box white"></div>
+            <div class="box white"></div>
+            <div class="box delay-9"></div>
+            <div class="box white"></div>
+            <div class="box white"></div>
+            <div class="box white"></div>
+            <div class="box white"></div>
+            <div class="clear"></div>
+        </div>
+        <div class="loading-text">Caricamento in corso...</div>
+    </div>
+</div>
 <body>
   <div class="background-grid"></div>
 
 <header id="header">
     <nav class="container">
-            <a href="index.html" class="logo">LC<strong>25</strong></a>
+            <a href="index.html" class="logo link-con-loader">LC<strong>25</strong></a>
       <div class="nav-menu">
-        <a href="index.html#programma" class="nav-link">Programma</a>
-        <a href="index.html#gallery" class="nav-link">Edizioni Precedenti</a>
-        <a href="index.html#contatti" class="nav-link">Contatti</a>
+        <a href="index.html#programma" class="nav-link link-con-loader">Programma</a>
+        <a href="index.html#gallery" class="nav-link link-con-loader">Edizioni Precedenti</a>
+        <a href="index.html#contatti" class="nav-link link-con-loader">Contatti</a>
       </div>
     </nav>
   </header>
@@ -49,21 +178,15 @@
 
         <div class="video-container" style="position: relative; padding-bottom: 56.25%; /* Proporzione 16:9 */ height: 0; overflow: hidden; max-width: 100%; background: #000; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
 
-          <iframe
-            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
-            src="https://www.youtube-nocookie.com/embed/LceCqidBmKM?si=nDk2tQLy6SB1H5M9"
-            title="Diretta Streaming Lamezia Cuore 2025"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen>
-          </iframe>
-
+          <img alt="comingsoon" src="foto/framediretta.jpg">
+            <!-- inserisci iframe nik>
+            <!-->
         </div>
-
+        <!--
         <p style="text-align: center; margin-top: 1.5rem; opacity: 0.8;">
           In caso di problemi con la visualizzazione, <a href="https://www.youtube.com/watch?v=SOSTITUISCI_CON_ID_VIDEO_YOUTUBE" target="_blank" rel="noopener">guarda la diretta su YouTube</a>.
-        </p>
+        </p>>
+        <!-->
       </div>
     </section>
   </main>

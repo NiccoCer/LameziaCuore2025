@@ -3,13 +3,19 @@
 
   <url>
     <loc>https://www.lameziacuore.it/</loc>
-    <lastmod>2025-10-26</lastmod>
+    <lastmod>2025-11-05</lastmod>
     <priority>1.0</priority>
   </url>
 
   <url>
     <loc>https://www.lameziacuore.it/iscrizione</loc>
-    <lastmod>2025-10-26</lastmod>
+    <lastmod>2025-11-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.lameziacuore.it/diretta</loc>
+    <lastmod>2025-11-05</lastmod>
     <priority>0.8</priority>
   </url>
 

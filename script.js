@@ -199,12 +199,12 @@ window.addEventListener('pageshow', (event) => {
 });
 
 // Nascondi il loader prima di lasciare la pagina
-window.addEventListener('beforeunload', () => {
-  const loaderOverlay = document.getElementById('loaderOverlay');
-  if (loaderOverlay) {
-    loaderOverlay.classList.remove('active');
-  }
-});
+//window.addEventListener('beforeunload', () => {
+//  const loaderOverlay = document.getElementById('loaderOverlay');
+//  if (loaderOverlay) {
+//    loaderOverlay.classList.remove('active');
+//  }
+//});
 // Quando mostri il loader
 loaderOverlay.classList.add('active');
 document.body.classList.add('loader-active');

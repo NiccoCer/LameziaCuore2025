@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Autodichiarazione Medici/Infermieri</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --c-bg: #0A0D18;
+      --c-ink: #EBF0F7;
+      --c-ink-muted: #9DA8B7;
+      --c-accent-primary: #E53945;
+      --c-accent-secondary: #00A9E0;
+      --c-glass: rgba(18, 21, 36, 0.75);
+      --c-stroke: rgba(163, 177, 194, 0.13);
+      --font-primary: 'Space Grotesk', sans-serif;
+      --font-display: 'Playfair Display', serif;
+      --radius: 12px;
+      --transition: 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    body {
+      background: var(--c-bg);
+      color: var(--c-ink);
+      font-family: var(--font-primary);
+      min-height: 100vh;
+      margin: 0;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .autodichiarazione-card {
+      background: var(--c-glass);
+      border-radius: var(--radius);
+      box-shadow: 0 3px 18px rgba(0,0,0,0.14);
+      border: 1px solid var(--c-stroke);
+      padding: 40px 28px 30px 28px;
+      width: 100%;
+      max-width: 430px;
+      margin: 36px auto;
+      color: var(--c-ink);
+    }
+    .autodichiarazione-card h2 {
+      color: var(--c-accent-secondary);
+      font-family: var(--font-display);
+      text-align: center;
+      font-size: 2rem;
+      letter-spacing: 0.012em;
+      margin-bottom: 26px;
+    }
+    .autodichiarazione-form .form-group {
+      margin-bottom: 18px;
+      display: flex;
+      flex-direction: column;
+    }
+    .autodichiarazione-form label {
+      color: var(--c-ink-muted);
+      font-size: 0.96rem;
+      font-weight: 500;
+      margin-bottom: 7px;
+    }
+    .autodichiarazione-form input[type="text"],
+    .autodichiarazione-form input[type="email"] {
+      background: var(--c-bg);
+      color: var(--c-ink);
+      border: 1.2px solid var(--c-stroke);
+      border-radius: 7px;
+      padding: 12px 13px;
+      font-family: var(--font-primary);
+      font-size: 1.07rem;
+      transition: border-color 0.2s;
+      outline: none;
+    }
+    .autodichiarazione-form input[type="text"]:focus,
+    .autodichiarazione-form input[type="email"]:focus {
+      border-color: var(--c-accent-secondary);
+      background: rgba(0, 169, 224, 0.08);
+    }
+    .autodichiarazione-form .checkbox-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 0 12px 6px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 7px;
+      border: 1px solid var(--c-stroke);
+      margin-bottom: 14px;
+    }
+    .autodichiarazione-form input[type="checkbox"] {
+      accent-color: var(--c-accent-primary);
+      width: 18px; height: 18px;
+      cursor: pointer;
+    }
+    .autodichiarazione-form .checkbox-group span {
+      font-size: 0.99rem;
+      color: var(--c-ink);
+    }
+    .info-btn {
+      background: none;
+      color: var(--c-accent-secondary);
+      border: none;
+      font-size: 0.93rem;
+      margin-left: 8px;
+      cursor: pointer;
+      text-decoration: underline;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .info-btn:hover { color: var(--c-accent-primary); }
+    .autodichiarazione-form .btn-primary {
+      width: 100%;
+      padding: 13px 0;
+      border-radius: 8px;
+      background: var(--c-accent-primary);
+      color: #fff;
+      font-size: 1.12rem;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+      margin-top: 18px;
+      box-shadow: 0 3px 10px rgba(229, 57, 69, 0.11);
+    }
+    .autodichiarazione-form .btn-primary:hover {
+      background: var(--c-accent-secondary);
+      color: #fff;
+    }
+    .autodichiarazione-form .loading {
+      display: none;
+      margin-top: 16px;
+      color: var(--c-accent-secondary);
+      font-weight: 600;
+      text-align: center;
+      font-size: 0.98rem;
+    }
+    .autodichiarazione-form .loading.active {
+      display: block;
+    }
+    .autodichiarazione-form .error-message {
+      display: none;
+      margin-top: 12px;
+      padding: 8px 10px;
+      background: rgba(229,57,69,0.15);
+      color: var(--c-accent-primary);
+      border-radius: 7px;
+      font-weight: 500;
+      text-align: center;
+      font-size: 0.97rem;
+    }
+    .autodichiarazione-form .error-message.active {
+      display: block;
+    }
+    @media (max-width: 600px) {
+      .autodichiarazione-card { padding: 18px 2vw; font-size: 1rem; }
+      .autodichiarazione-card h2 { font-size: 1.08rem; }
+    }
+    /* Modal */
+    .modal-overlay {
+      display: none;
+      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+      background: rgba(10,13,24,0.94);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-overlay.active {
+      display: flex;
+    }
+    .modal-box {
+      background: var(--c-glass);
+      color: var(--c-ink);
+      border-radius: var(--radius);
+      box-shadow: 0 4px 22px rgba(0,0,0,0.20);
+      padding: 34px 26px 26px 26px;
+      max-width: 410px;
+      width: 95vw;
+      position: relative;
+      font-size: 0.97rem;
+      line-height: 1.65;
+    }
+    .close-modal {
+      position: absolute;
+      top: 9px; right: 15px;
+      font-size: 2.1rem;
+      background: none;
+      border: none;
+      color: var(--c-accent-primary);
+      cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    .close-modal:hover { opacity: 1; }
+    .modal-content {
+      margin-top: 16px;
+      max-height: 320px;
+      overflow-y: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="autodichiarazione-card">
+    <h2>Autodichiarazione Medici/Infermieri</h2>
+    <form class="autodichiarazione-form" id="declarationForm" autocomplete="off">
+      <div class="checkbox-group form-group">
+        <input type="checkbox" name="professione" value="medico" required id="professioneCheck">
+        <span for="professioneCheck">Dichiaro di essere un medico o infermiere</span>
+      </div>
+      <div class="form-group">
+        <label for="nome">Nome</label>
+        <input type="text" name="nome" id="nome" required autocomplete="given-name">
+      </div>
+      <div class="form-group">
+        <label for="cognome">Cognome</label>
+        <input type="text" name="cognome" id="cognome" required autocomplete="family-name">
+      </div>
+      <div class="form-group">
+        <label for="email">Email (opzionale)</label>
+        <input type="email" name="email" id="email" autocomplete="email">
+      </div>
+      <div class="checkbox-group form-group">
+        <input type="checkbox" name="privacy" required id="privacyCheckbox">
+        <span for="privacyCheckbox">Acconsento al trattamento dei dati</span>
+        <button type="button" class="info-btn" id="openPrivacyInfo">Leggi informativa</button>
+      </div>
+      <button id="submitBtn" type="submit" class="btn-primary">Accedi alla diretta</button>
+      <div class="loading" id="loading">Invio in corso...</div>
+      <div class="error-message" id="errorMessage"></div>
+    </form>
+  </div>
+
+  <!-- Modale Informativa Privacy -->
+  <div class="modal-overlay" id="privacyModal">
+    <div class="modal-box">
+      <button class="close-modal" id="closePrivacyModal">&times;</button>
+      <h3>Informativa sul trattamento dei dati</h3>
+      <div class="modal-content">
+        <p>Ai sensi del Regolamento UE 2016/679 (GDPR), i dati raccolti saranno trattati esclusivamente per la gestione dell'accesso all'evento e per finalità di autocertificazione professionale.
+        I dati saranno conservati solo per il tempo necessario, non saranno diffusi o venduti a terzi e saranno protetti secondo le normative vigenti.
+        Puoi esercitare i tuoi diritti di rettifica, cancellazione o oblio in ogni momento contattando l’organizzatore.</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/@supabase/supabase-js"></script>
+  <script>
+    // --- Privacy popup logic ---
+    const privacyBtn = document.getElementById('openPrivacyInfo');
+    const privacyModal = document.getElementById('privacyModal');
+    const closePrivacyModal = document.getElementById('closePrivacyModal');
+    privacyBtn.addEventListener('click', function() {
+      privacyModal.classList.add('active');
+    });
+    closePrivacyModal.addEventListener('click', function() {
+      privacyModal.classList.remove('active');
+    });
+    privacyModal.addEventListener('click', function(e) {
+      if(e.target === privacyModal){
+        privacyModal.classList.remove('active');
+      }
+    });
+
+    // --- Configurazione Supabase ---
+    const SUPABASE_URL = 'https://ovictboehmttjgmdujml.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im92aWN0Ym9laG10dGpnbWR1am1sIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjIzNjE2NjEsImV4cCI6MjA3NzkzNzY2MX0.cCJvWNUE810yHIYY1MG8iR1l5d7a_yeEIPlgW6_9FmA';
+    const REDIRECT_URL = 'diretta.html'; // Cambia con il vero link diretta
+    const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    // --- Autenticazione semplificata localStorage ---
+    if (localStorage.getItem('autodichiarazione_fatta') === 'ok') {
+      window.location.href = REDIRECT_URL;
+    }
+    const form = document.getElementById('declarationForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const loading = document.getElementById('loading');
+    const errorMessage = document.getElementById('errorMessage');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      errorMessage.classList.remove('active');
+      errorMessage.textContent = '';
+      loading.classList.add('active');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Invio in corso...';
+      const formData = new FormData(form);
+      const data = {
+        nome: formData.get('nome'),
+        cognome: formData.get('cognome'),
+        professione: formData.get('professione'),
+        email: formData.get('email') || null,
+        consenso_privacy: formData.get('privacy') === 'on',
+        data_registrazione: new Date().toISOString()
+      };
+      try {
+        const { error } = await supabase
+          .from('Autodichiarazioni')
+          .insert([data]);
+        if (error) throw error;
+        localStorage.setItem('autodichiarazione_fatta', 'ok');
+        window.location.href = REDIRECT_URL;
+      } catch (error) {
+        errorMessage.textContent = 'Si è verificato un errore. Riprova più tardi.';
+        errorMessage.classList.add('active');
+        loading.classList.remove('active');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Accedi alla diretta';
+      }
+    });
+    // Validazione visiva input
+    const requiredInputs = form.querySelectorAll('input[required]');
+    requiredInputs.forEach(input => {
+      input.addEventListener('invalid', (e) => {
+        e.preventDefault();
+        input.style.borderColor = 'var(--c-accent-primary)';
+      });
+      input.addEventListener('input', () => {
+        input.style.borderColor = 'var(--c-stroke)';
+      });
+    });
+  </script>
+</body>
+</html>

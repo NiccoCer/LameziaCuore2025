@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autodichiarazione - Lamezia Cuore 2025</title>
+    <style>
+        :root {
+            --color-white: rgba(255, 255, 255, 1);
+            --color-black: rgba(0, 0, 0, 1);
+            --color-bg-dark: #0A0D18;
+            --color-ink: #EBF0F7;
+            --color-ink-muted: #9DA8B7;
+            --color-accent-red: #E53945;
+            --color-accent-blue: #00A9E0;
+            --color-glass: rgba(18, 21, 36, 0.7);
+            --color-stroke: rgba(163, 177, 194, 0.15);
+
+            --color-background: var(--color-bg-dark);
+            --color-surface: var(--color-glass);
+            --color-text: var(--color-ink);
+            --color-text-secondary: var(--color-ink-muted);
+            --color-primary: var(--color-accent-red);
+            --color-primary-hover: #ff3945;
+            --color-primary-active: #cc2f3a;
+            --color-secondary: rgba(163, 177, 194, 0.08);
+            --color-border: var(--color-stroke);
+            --color-card-border: var(--color-stroke);
+            --color-error: var(--color-accent-red);
+            --color-focus-ring: rgba(229, 57, 69, 0.4);
+            --color-btn-primary-text: var(--color-white);
+
+            --font-family-base: 'Space Grotesk', "FKGroteskNeue", "Geist", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            --font-family-display: 'Playfair Display', serif;
+            --font-size-sm: 12px;
+            --font-size-base: 14px;
+            --font-size-lg: 16px;
+            --font-size-xl: 18px;
+            --font-size-2xl: 20px;
+            --font-size-3xl: 24px;
+            --font-size-4xl: 30px;
+            --font-weight-normal: 400;
+            --font-weight-medium: 500;
+            --font-weight-semibold: 550;
+            --font-weight-bold: 600;
+            --line-height-tight: 1.2;
+            --line-height-normal: 1.5;
+
+            --space-8: 8px;
+            --space-12: 12px;
+            --space-16: 16px;
+            --space-20: 20px;
+            --space-24: 24px;
+            --space-32: 32px;
+
+            --radius-base: 8px;
+            --radius-lg: 12px;
+
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.04), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+
+            --duration-fast: 150ms;
+            --duration-normal: 250ms;
+            --ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @font-face {
+            font-family: 'FKGroteskNeue';
+            src: url('https://r2cdn.perplexity.ai/fonts/FKGroteskNeue.woff2') format('woff2');
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Playfair+Display:wght@700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: var(--font-size-base);
+            font-family: var(--font-family-base);
+            line-height: var(--line-height-normal);
+            color: var(--color-text);
+            background-color: var(--color-background);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-20);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .card {
+            background-color: var(--color-surface);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--color-card-border);
+            box-shadow: var(--shadow-md);
+            padding: var(--space-32);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: var(--space-32);
+        }
+
+        .header h1 {
+            font-size: var(--font-size-3xl);
+            font-weight: var(--font-weight-bold);
+            font-family: var(--font-family-display);
+            color: var(--color-text);
+            margin-bottom: var(--space-12);
+            line-height: var(--line-height-tight);
+        }
+
+        .header p {
+            font-size: var(--font-size-base);
+            color: var(--color-text-secondary);
+            line-height: var(--line-height-normal);
+        }
+
+        .form-group {
+            margin-bottom: var(--space-20);
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: var(--space-8);
+            font-weight: var(--font-weight-medium);
+            font-size: var(--font-size-base);
+            color: var(--color-text);
+        }
+
+        .form-control {
+            display: block;
+            width: 100%;
+            padding: var(--space-12);
+            font-size: var(--font-size-base);
+            line-height: 1.5;
+            color: var(--color-text);
+            background-color: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-base);
+            transition: border-color var(--duration-fast) var(--ease-standard),
+                        box-shadow var(--duration-fast) var(--ease-standard);
+            font-family: var(--font-family-base);
+        }
+
+        .form-control:focus {
+            border-color: var(--color-primary);
+            outline: 2px solid var(--color-primary);
+            outline-offset: 0;
+        }
+
+        .form-control::placeholder {
+            color: var(--color-text-secondary);
+            opacity: 0.6;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: var(--space-12);
+            padding: var(--space-16);
+            background-color: var(--color-secondary);
+            border-radius: var(--radius-base);
+            border: 1px solid var(--color-border);
+            min-height: 56px;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            flex-shrink: 0;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            accent-color: var(--color-primary);
+        }
+
+        .checkbox-group label {
+            flex: 1;
+            font-size: var(--font-size-base);
+            color: var(--color-text);
+            line-height: var(--line-height-normal);
+            cursor: pointer;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: var(--space-16);
+            margin-top: var(--space-8);
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: var(--space-8);
+        }
+
+        .radio-option input[type="radio"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: var(--color-primary);
+        }
+
+        .radio-option label {
+            font-size: var(--font-size-base);
+            color: var(--color-text);
+            cursor: pointer;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: var(--space-12) var(--space-24);
+            border-radius: var(--radius-base);
+            font-size: var(--font-size-base);
+            font-weight: var(--font-weight-medium);
+            line-height: 1.5;
+            cursor: pointer;
+            transition: all var(--duration-normal) var(--ease-standard);
+            border: none;
+            text-decoration: none;
+            font-family: var(--font-family-base);
+        }
+
+        .btn--primary {
+            background: var(--color-primary);
+            color: var(--color-btn-primary-text);
+        }
+
+        .btn--primary:hover:not(:disabled) {
+            background: var(--color-primary-hover);
+        }
+
+        .btn--primary:active:not(:disabled) {
+            background: var(--color-primary-active);
+        }
+
+        .btn--primary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .btn:focus-visible {
+            outline: none;
+            box-shadow: 0 0 0 3px var(--color-focus-ring);
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            margin-top: var(--space-16);
+            color: var(--color-text-secondary);
+            font-size: var(--font-size-sm);
+        }
+
+        .loading.active {
+            display: block;
+        }
+
+        .error-message {
+            display: none;
+            padding: var(--space-12);
+            background-color: rgba(var(--color-red-500-rgb), 0.15);
+            border: 1px solid var(--color-error);
+            border-radius: var(--radius-base);
+            color: var(--color-error);
+            font-size: var(--font-size-sm);
+            margin-top: var(--space-16);
+        }
+
+        .error-message.active {
+            display: block;
+        }
+
+        .required {
+            color: var(--color-error);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="header">
+                <h1>Autodichiarazione</h1>
+                <p>Per accedere alla diretta è necessario dichiarare di essere un professionista sanitario</p>
+            </div>
+
+            <form id="declarationForm">
+                <div class="form-group">
+                    <label class="form-label">Professione <span class="required">*</span></label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="medico" name="professione" value="medico" required>
+                            <label for="medico">Medico</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="infermiere" name="professione" value="infermiere" required>
+                            <label for="infermiere">Infermiere</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="nome" class="form-label">Nome <span class="required">*</span></label>
+                    <input type="text" id="nome" name="nome" class="form-control" placeholder="Inserisci il tuo nome" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="cognome" class="form-label">Cognome <span class="required">*</span></label>
+                    <input type="text" id="cognome" name="cognome" class="form-control" placeholder="Inserisci il tuo cognome" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email" class="form-label">Email (opzionale)</label>
+                    <input type="email" id="email" name="email" class="form-control" placeholder="esempio@email.it">
+                </div>
+
+                <div class="form-group">
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="dichiarazione" name="dichiarazione" required>
+                        <label for="dichiarazione">
+                            Dichiaro di essere un medico o un infermiere e di avere titolo per accedere a questo contenuto
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="privacy" name="privacy" required>
+                        <label for="privacy">
+                            Acconsento al trattamento dei miei dati personali secondo la normativa sulla privacy
+                        </label>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn--primary" id="submitBtn">
+                    Accedi alla diretta
+                </button>
+
+                <div class="loading" id="loading">
+                    Invio in corso...
+                </div>
+
+                <div class="error-message" id="errorMessage"></div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        // ===================================
+        // CONFIGURAZIONE SUPABASE
+        // ===================================
+        // SOSTITUISCI CON I TUOI DATI DA SUPABASE
+        const SUPABASE_URL = 'https://ovictboehmttjgmdujml.supabase.co'; // Es: https://xxx.supabase.co
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im92aWN0Ym9laG10dGpnbWR1am1sIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjIzNjE2NjEsImV4cCI6MjA3NzkzNzY2MX0.cCJvWNUE810yHIYY1MG8iR1l5d7a_yeEIPlgW6_9FmA'; // Chiave pubblica
+        const REDIRECT_URL = 'diretta.html'; // Pagina dove reindirizzare dopo il submit
+
+        // ===================================
+        // INIZIALIZZAZIONE
+        // ===================================
+        const { createClient } = supabase;
+        const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        const form = document.getElementById('declarationForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const loading = document.getElementById('loading');
+        const errorMessage = document.getElementById('errorMessage');
+
+        // ===================================
+        // CONTROLLO AUTODICHIARAZIONE GIÀ FATTA
+        // ===================================
+        // Se l'utente ha già compilato il form, reindirizzalo direttamente alla diretta
+        if (localStorage.getItem('autodichiarazione_completata') === 'true') {
+            window.location.href = REDIRECT_URL;
+        }
+
+        // ===================================
+        // GESTIONE SUBMIT FORM
+        // ===================================
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Reset messaggi errore
+            errorMessage.classList.remove('active');
+            errorMessage.textContent = '';
+
+            // Mostra loading
+            loading.classList.add('active');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Invio in corso...';
+
+            // Raccogli dati dal form
+            const formData = new FormData(form);
+            const data = {
+                nome: formData.get('nome'),
+                cognome: formData.get('cognome'),
+                professione: formData.get('professione'),
+                email: formData.get('email') || null,
+                data_registrazione: new Date().toISOString(),
+                consenso_privacy: formData.get('privacy') === 'on'
+            };
+
+            try {
+                // Invia dati a Supabase
+                const { data: insertedData, error } = await supabaseClient
+                    .from('Autodichiarazioni')
+                    .insert([data]);
+
+                if (error) {
+                    throw error;
+                }
+
+                // Successo - salva flag in localStorage e reindirizza
+                localStorage.setItem('autodichiarazione_completata', 'true');
+                window.location.href = REDIRECT_URL;
+
+            } catch (error) {
+                // Gestione errori
+                console.error('Errore completo:', error);
+
+                // Mostra messaggio di errore dettagliato
+                let errorText = 'Si è verificato un errore. ';
+                if (error.message) {
+                    errorText += 'Dettaglio: ' + error.message;
+                } else {
+                    errorText += 'Riprova più tardi.';
+                }
+
+                errorMessage.textContent = errorText;
+                errorMessage.classList.add('active');
+
+                // Reset UI
+                loading.classList.remove('active');
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Accedi alla diretta';
+            }
+        });
+
+        // ===================================
+        // VALIDAZIONE IN TEMPO REALE
+        // ===================================
+        const requiredInputs = form.querySelectorAll('input[required]');
+        requiredInputs.forEach(input => {
+            input.addEventListener('invalid', (e) => {
+                e.preventDefault();
+                input.style.borderColor = 'var(--color-error)';
+            });
+
+            input.addEventListener('input', () => {
+                input.style.borderColor = 'var(--color-border)';
+            });
+        });
+    </script>
+</body>
+</html>

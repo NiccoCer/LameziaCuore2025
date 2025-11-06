@@ -4,7 +4,9 @@
   "description": "",
   "main": "script.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prebuild": "node scripts/generate-gallery.js",
+    "build": "next build"
   },
   "repository": {
     "type": "git",
@@ -18,8 +20,4 @@
     "url": "https://github.com/NiccoCer/LameziaCuore2025/issues"
   },
   "homepage": "https://github.com/NiccoCer/LameziaCuore2025#readme"
-}
-"scripts": {
-  "prebuild": "node scripts/generate-gallery.js",
-  "build": "next build"
 }

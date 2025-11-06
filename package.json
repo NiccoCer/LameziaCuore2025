@@ -4,10 +4,10 @@
   "description": "",
   "main": "script.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "prebuild": "node scripts/generate-gallery.js",
-    "build": "next build"
-  },
+  "test": "echo \"Error: no test specified\" && exit 1",
+  "prebuild": "node scripts/generate-gallery.js",
+  "build": "echo \"Build terminata\""
+},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/NiccoCer/LameziaCuore2025.git"

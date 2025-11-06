@@ -360,111 +360,19 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="/gallery.js"></script>
+    <div class="grid" id="gallery"></div>
     <script>
-        // ===================================
-        // CONFIGURAZIONE SUPABASE
-        // ===================================
-        // SOSTITUISCI CON I TUOI DATI DA SUPABASE
-        const SUPABASE_URL = 'https://ovictboehmttjgmdujml.supabase.co'; // Es: https://xxx.supabase.co
-        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im92aWN0Ym9laG10dGpnbWR1am1sIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjIzNjE2NjEsImV4cCI6MjA3NzkzNzY2MX0.cCJvWNUE810yHIYY1MG8iR1l5d7a_yeEIPlgW6_9FmA'; // Chiave pubblica
-        const REDIRECT_URL = 'diretta.html'; // Pagina dove reindirizzare dopo il submit
-
-        // ===================================
-        // INIZIALIZZAZIONE
-        // ===================================
-        const { createClient } = supabase;
-        const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
-        const form = document.getElementById('declarationForm');
-        const submitBtn = document.getElementById('submitBtn');
-        const loading = document.getElementById('loading');
-        const errorMessage = document.getElementById('errorMessage');
-
-        // ===================================
-        // CONTROLLO AUTODICHIARAZIONE GIÀ FATTA
-        // ===================================
-        // Se l'utente ha già compilato il form, reindirizzalo direttamente alla diretta
-        if (localStorage.getItem('autodichiarazione_completata') === 'true') {
-            window.location.href = REDIRECT_URL;
-        }
-
-        // ===================================
-        // GESTIONE SUBMIT FORM
-        // ===================================
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-
-            // Reset messaggi errore
-            errorMessage.classList.remove('active');
-            errorMessage.textContent = '';
-
-            // Mostra loading
-            loading.classList.add('active');
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Invio in corso...';
-
-            // Raccogli dati dal form
-            const formData = new FormData(form);
-            const data = {
-                nome: formData.get('nome'),
-                cognome: formData.get('cognome'),
-                professione: formData.get('professione'),
-                email: formData.get('email') || null,
-                data_registrazione: new Date().toISOString(),
-                consenso_privacy: formData.get('privacy') === 'on'
-            };
-
-            try {
-                // Invia dati a Supabase
-                const { data: insertedData, error } = await supabaseClient
-                    .from('Autodichiarazioni')
-                    .insert([data]);
-
-                if (error) {
-                    throw error;
-                }
-
-                // Successo - salva flag in localStorage e reindirizza
-                localStorage.setItem('autodichiarazione_completata', 'true');
-                window.location.href = REDIRECT_URL;
-
-            } catch (error) {
-                // Gestione errori
-                console.error('Errore completo:', error);
-
-                // Mostra messaggio di errore dettagliato
-                let errorText = 'Si è verificato un errore. ';
-                if (error.message) {
-                    errorText += 'Dettaglio: ' + error.message;
-                } else {
-                    errorText += 'Riprova più tardi.';
-                }
-
-                errorMessage.textContent = errorText;
-                errorMessage.classList.add('active');
-
-                // Reset UI
-                loading.classList.remove('active');
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Accedi alla diretta';
-            }
-        });
-
-        // ===================================
-        // VALIDAZIONE IN TEMPO REALE
-        // ===================================
-        const requiredInputs = form.querySelectorAll('input[required]');
-        requiredInputs.forEach(input => {
-            input.addEventListener('invalid', (e) => {
-                e.preventDefault();
-                input.style.borderColor = 'var(--color-error)';
-            });
-
-            input.addEventListener('input', () => {
-                input.style.borderColor = 'var(--color-border)';
-            });
-        });
+    const grid = document.getElementById('gallery');
+    window.galleryImages.forEach(src => {
+      const img = document.createElement('img');
+      img.src = src;
+      img.style.width = '150px';
+      img.style.margin = '8px';
+      grid.appendChild(img);
+    });
     </script>
-</body>
-</html>
+    <style>
+    .grid { display: flex; flex-wrap: wrap; gap: 8px; }
+    .grid img { border-radius: 8px; box-shadow: 0 2px 8px #0002; }
+    </style>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Galleria Foto Automatica</title>
+  <style>
+    body {
+      background: #fafafb;
+      color: #222;
+      font-family: Arial, sans-serif;
+    }
+    .grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      padding: 20px;
+      justify-content: center;
+    }
+    .grid a {
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px #0002;
+      display: block;
+      transition: transform 0.2s;
+      text-decoration: none;
+    }
+    .grid a:hover img {
+      transform: scale(1.07);
+      filter: brightness(1.15);
+      cursor: pointer;
+    }
+    .grid img {
+      display: block;
+      width: 170px;
+      height: 150px;
+      object-fit: cover;
+      transition: transform 0.2s, filter 0.2s;
+    }
+    #lightbox {
+      display: none;
+      position: fixed;
+      left: 0; top: 0;
+      width: 100vw; height: 100vh;
+      background: #222d;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      flex-direction: column;
+    }
+    #lightbox.show {
+      display: flex;
+    }
+    #lightbox img {
+      max-width: 70vw;
+      max-height: 70vh;
+      border-radius: 10px;
+      box-shadow: 0 2px 18px #000a;
+    }
+    #lightbox button, #downloadBtn {
+      font-size: 2em;
+      background: none;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+    }
+    #downloadBtn {
+      margin: 30px 0 0 0;
+      font-size: 1.1em;
+      background: #222a;
+      padding: 8px 28px;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      border: none;
+      display: inline-block;
+    }
+    #closeBtn {
+      font-size: 2.2em;
+      color: #fff;
+      background: none;
+      border: none;
+      cursor: pointer;
+      opacity: 0.85;
+      position: absolute;
+      right: 20px;
+      top: 15px;
+      z-index: 2;
+    }
+  </style>
+</head>
+<body>
+  <script src="gallery.js"></script>
+  <div class="grid" id="gallery"></div>
+  <!-- Lightbox overlay -->
+  <div id="lightbox">
+    <button id="closeBtn">&times;</button>
+    <div style="display:flex; gap:12px; align-items:center;">
+      <button id="prevBtn">&#8592;</button>
+      <img id="lightboxImg" src="" />
+      <button id="nextBtn">&#8594;</button>
+    </div>
+    <a id="downloadBtn" download>Scarica</a>
+  </div>
+  <script>
+    const grid = document.getElementById('gallery');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const closeBtn = document.getElementById('closeBtn');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const downloadBtn = document.getElementById('downloadBtn');
+
+    let currentIndex = 0;
+    function showLightbox(index) {
+      currentIndex = index;
+      lightboxImg.src = window.galleryImages[currentIndex];
+      downloadBtn.href = window.galleryImages[currentIndex];
+      downloadBtn.setAttribute('download', window.galleryImages[currentIndex].split('/').pop());
+      lightbox.classList.add('show');
+    }
+    function closeLightbox() {
+      lightbox.classList.remove('show');
+    }
+    if (window.galleryImages && window.galleryImages.length) {
+      window.galleryImages.forEach((src, i) => {
+        const a = document.createElement('a');
+        a.href = src;
+        a.target = '_blank';
+        a.download = '';
+        const img = document.createElement('img');
+        img.src = src;
+        img.style.width = '150px';
+        img.style.margin = '8px';
+        img.style.objectFit = 'cover';
+        a.appendChild(img);
+        a.addEventListener('click', function(e) {
+          e.preventDefault();
+          showLightbox(i);
+        });
+        grid.appendChild(a);
+      });
+    } else {
+      grid.innerText = 'Nessuna immagine trovata.';
+    }
+    closeBtn.onclick = closeLightbox;
+    prevBtn.onclick = function() {
+      currentIndex = (currentIndex - 1 + window.galleryImages.length) % window.galleryImages.length;
+      showLightbox(currentIndex);
+    };
+    nextBtn.onclick = function() {
+      currentIndex = (currentIndex + 1) % window.galleryImages.length;
+      showLightbox(currentIndex);
+    };
+    document.addEventListener('keydown', function(e) {
+      if (!lightbox.classList.contains('show')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') prevBtn.onclick();
+      if (e.key === 'ArrowRight') nextBtn.onclick();
+    });
+    // Chiudi lightbox cliccando su sfondo scuro (solo se non clicchi su elementi interni)
+    lightbox.addEventListener('click', function(e) {
+      if (e.target === lightbox) closeLightbox();
+    });
+  </script>
+</body>
+</html>

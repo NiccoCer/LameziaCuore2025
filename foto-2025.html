@@ -1,191 +1,209 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="it" data-theme="dark">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Galleria Foto 2025</title>
-  <link rel="stylesheet" href="style.css"><!-- Il tuo CSS, custom property -->
-  <style>
-    .section-title {
-      font-family: var(--font-display, serif);
-      font-size: clamp(2rem, 5vw, 2.6rem);
-      margin: 42px 0 16px 0;
-      color: var(--c-accent-primary, #c52e41);
-      text-align: center;
-      letter-spacing: 0.03em;
-    }
-    .grid-desc {
-      text-align: center;
-      color: var(--c-ink-muted, #9DA8B7);
-      margin-bottom: 18px;
-      font-size: 1.13em;
-    }
-    .gallery__grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 28px;
-      max-width: 1100px;
-      margin: 0 auto 60px auto;
-      padding: 38px 3vw 0 3vw;
-    }
-    .gallery__grid a {
-      display: block;
-      border-radius: var(--radius, 12px);
-      overflow: hidden;
-      box-shadow: 0 4px 30px #0001;
-      background: var(--c-bg, #0A0D18);
-      border: 1.2px solid var(--c-stroke, #9DA8B7);
-      transition: box-shadow 0.19s, transform 0.19s;
-    }
-    .gallery__grid a:hover {
-      box-shadow: 0 16px 38px #0004;
-      transform: translateY(-5px) scale(1.035);
-    }
-    .gallery__grid img {
-      width: 100%;
-      height: 150px;
-      object-fit: cover;
-      border-radius: var(--radius, 12px) var(--radius, 12px) 0 0;
-      transition: filter 0.16s, transform 0.16s;
-      background: #191a21;
-      display: block;
-    }
-    @media (max-width:900px) {
-      .gallery__grid {gap:13px;}
-      .gallery__grid img{height:21vw;min-height:80px;}
-    }
-    @media (max-width:600px) {
-      .gallery__grid {gap:7px;}
-      .gallery__grid img {height:40vw;}
-    }
-    .lightbox {
-      opacity: 0;
-      visibility: hidden;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw; height: 100vh;
-      background-color: rgba(10,13,24,0.95);
-      backdrop-filter: blur(4px);
-      z-index: 1111;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      transition: opacity 0.27s;
-    }
-    .lightbox.open { opacity: 1; visibility: visible; }
-    .lightbox__image {
-      max-width: 92vw; max-height: 64vh;
-      border-radius: var(--radius,12px);
-      box-shadow: 0 4px 32px #000a;
-      background: var(--c-bg, #0A0D18);
-      display:block;
-    }
-    .lightbox__close { position:absolute;top:22px;right:30px; background:none; border:none; font-size:2.6em; color:var(--c-ink-muted,#9DA8B7); cursor:pointer; transition:color 0.21s; }
-    .lightbox__close:hover{color:var(--c-accent-primary, #c52e41);}
-    .lightbox-nav-btn { font-size:2.2em; background:none; border:none; color:var(--c-ink-muted,#9DA8B7); cursor:pointer; transition:color 0.19s; }
-    .lightbox-nav-btn:hover{color:var(--c-accent-primary,#c52e41);}
-    .btn--primary {
-      margin:22px auto 0 auto; display:inline-block;
-      background: var(--c-accent-primary, #c52e41);
-      color: #fff;
-      padding: 10px 32px;
-      border-radius: 8px;
-      font-weight:700;
-      border:none;
-      font-family:var(--font-primary,sans-serif);
-      box-shadow:0 1px 11px #0002;
-    }
-    @media(max-width:600px){ .lightbox__image{max-width:98vw;max-height:44vh;} }
-  </style>
+  <meta name="description" content="Diretta - Lamezia Cuore 2025: il battito della ricerca, il respiro della cura. Il futuro della cardiologia, oggi. Un congresso professionale e innovativo.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="favicon.ico">
+  <title>Foto - Lamezia Cuore</title>
+
+  <meta name="description" content="Foto - Lamezia Cuore 2025: il battito della ricerca, il respiro della cura. Il futuro della cardiologia, oggi. Un congresso professionale e innovativo." />
+  <meta property="og:title" content="Foto - Lamezia Cuore 2025" />
+  <meta property="og:url" content="https://www.lameziacuore.it/"/>
+  <meta property="og:image" content="foto.jpeg"/>
+  <meta property="og:type" content="website"/>
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="StyleP/foto.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+
+    <script src="script.js" defer></script>
+    <script src="StyleP/foto.js" defer></script>
 </head>
-<body>
-  <section id="gallery-section">
-    <h2 class="section-title">Galleria Fotografica 2025</h2>
-    <div class="grid-desc">Anteprime veloci: clicca per vedere e scaricare la foto originale in alta qualità!</div>
-    <script src="gallery.js"></script>
-    <div class="gallery__grid" id="gallery"></div>
-    <div class="lightbox" id="lightbox">
-      <button class="lightbox__close" id="closeBtn" aria-label="Chiudi">&times;</button>
-      <div style="display:flex; align-items:center; justify-content:center; gap:16px; margin:36px 0 0 0;">
-        <button id="prevBtn" aria-label="Precedente" class="lightbox-nav-btn">&#8592;</button>
-        <img id="lightboxImg" class="lightbox__image" src="" alt="Foto ingrandita"/>
-        <button id="nextBtn" aria-label="Successiva" class="lightbox-nav-btn">&#8594;</button>
-      </div>
-      <a id="downloadBtn" class="btn--primary" download>Scarica</a>
+<!-- Overlay del loader (nascosto di default) -->
+<div class="loader-overlay" id="loaderOverlay">
+    <div>
+        <div class="wrapper">
+            <div class="box white"></div>
+            <div class="box delay-1"></div>
+            <div class="box delay-2"></div>
+            <div class="box delay-3"></div>
+            <div class="box white"></div>
+            <div class="box delay-4"></div>
+            <div class="box delay-5"></div>
+            <div class="box delay-6"></div>
+            <div class="box delay-7"></div>
+            <div class="box white"></div>
+            <div class="clear"></div>
+
+            <div class="box delay-1"></div>
+            <div class="box delay-2"></div>
+            <div class="box delay-3"></div>
+            <div class="box delay-4"></div>
+            <div class="box delay-5"></div>
+            <div class="box delay-6"></div>
+            <div class="box delay-7"></div>
+            <div class="box delay-8"></div>
+            <div class="box delay-9"></div>
+            <div class="box delay-10"></div>
+            <div class="clear"></div>
+
+            <div class="box delay-2"></div>
+            <div class="box delay-3"></div>
+            <div class="box delay-4"></div>
+            <div class="box delay-5"></div>
+            <div class="box delay-6"></div>
+            <div class="box delay-7"></div>
+            <div class="box delay-8"></div>
+            <div class="box delay-9"></div>
+            <div class="box delay-10"></div>
+            <div class="box delay-1"></div>
+            <div class="clear"></div>
+
+            <div class="box delay-3"></div>
+            <div class="box delay-4"></div>
+            <div class="box delay-5"></div>
+            <div class="box delay-6"></div>
+            <div class="box delay-7"></div>
+            <div class="box delay-8"></div>
+            <div class="box delay-9"></div>
+            <div class="box delay-10"></div>
+            <div class="box delay-1"></div>
+            <div class="box delay-2"></div>
+            <div class="clear"></div>
+
+            <div class="box delay-4"></div>
+            <div class="box delay-5"></div>
+            <div class="box delay-6"></div>
+            <div class="box delay-7"></div>
+            <div class="box delay-8"></div>
+            <div class="box delay-9"></div>
+            <div class="box delay-10"></div>
+            <div class="box delay-1"></div>
+            <div class="box delay-2"></div>
+            <div class="box delay-3"></div>
+            <div class="clear"></div>
+
+            <div class="box white"></div>
+            <div class="box delay-5"></div>
+            <div class="box delay-6"></div>
+            <div class="box delay-7"></div>
+            <div class="box delay-8"></div>
+            <div class="box delay-9"></div>
+            <div class="box delay-10"></div>
+            <div class="box delay-1"></div>
+            <div class="box delay-2"></div>
+            <div class="box white"></div>
+            <div class="clear"></div>
+
+            <div class="box white"></div>
+            <div class="box white"></div>
+            <div class="box delay-6"></div>
+            <div class="box delay-7"></div>
+            <div class="box delay-8"></div>
+            <div class="box delay-9"></div>
+            <div class="box delay-10"></div>
+            <div class="box delay-1"></div>
+            <div class="box white"></div>
+            <div class="box white"></div>
+            <div class="clear"></div>
+
+            <div class="box white"></div>
+            <div class="box white"></div>
+            <div class="box white"></div>
+            <div class="box delay-7"></div>
+            <div class="box delay-8"></div>
+            <div class="box delay-9"></div>
+            <div class="box delay-10"></div>
+            <div class="box white"></div>
+            <div class="box white"></div>
+            <div class="box white"></div>
+            <div class="clear"></div>
+
+            <div class="box white"></div>
+            <div class="box white"></div>
+            <div class="box white"></div>
+            <div class="box white"></div>
+            <div class="box delay-8"></div>
+            <div class="box delay-9"></div>
+            <div class="box white"></div>
+            <div class="box white"></div>
+            <div class="box white"></div>
+            <div class="box white"></div>
+            <div class="clear"></div>
+
+            <div class="box white"></div>
+            <div class="box white"></div>
+            <div class="box white"></div>
+            <div class="box white"></div>
+            <div class="box white"></div>
+            <div class="box delay-9"></div>
+            <div class="box white"></div>
+            <div class="box white"></div>
+            <div class="box white"></div>
+            <div class="box white"></div>
+            <div class="clear"></div>
+        </div>
+        <div class="loading-text">Caricamento in corso...</div>
     </div>
-  </section>
-  <script>
-    const grid = document.getElementById('gallery');
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightboxImg');
-    const closeBtn = document.getElementById('closeBtn');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    const downloadBtn = document.getElementById('downloadBtn');
-    let currentIndex = 0;
-    // Solo le thumbs nella grid!
-    if (window.galleryImages && window.galleryImages.length) {
-      window.galleryImages.forEach((imgName, i) => {
-        const a = document.createElement('a');
-        a.href = '#';
-        a.onclick = e => { e.preventDefault(); showLightbox(i); };
-        const img = document.createElement('img');
-        img.src = 'public/images/thumbs/' + imgName; // SOLO thumbs nella grid
-        img.className = 'gallery-thumb';
-        img.alt = `Anteprima ${i + 1}`;
-        img.loading = 'lazy';
-        a.appendChild(img);
-        grid.appendChild(a);
-      });
-    } else {
-      grid.innerText = 'Nessuna immagine trovata.';
-    }
-    function showLightbox(i) {
-      currentIndex = i;
-      const bigSrc = 'public/images/' + window.galleryImages[i]; // SOLO ORIGINALE dopo il click
-      lightboxImg.src = bigSrc;
-      downloadBtn.href = bigSrc;
-      downloadBtn.setAttribute('download', window.galleryImages[i]);
-      lightbox.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
-    function closeLightbox() {
-      lightbox.classList.remove('open');
-      document.body.style.overflow = '';
-    }
-    closeBtn.onclick = closeLightbox;
-    prevBtn.onclick = function () {
-      currentIndex = (currentIndex - 1 + window.galleryImages.length) % window.galleryImages.length;
-      showLightbox(currentIndex);
-    };
-    nextBtn.onclick = function () {
-      currentIndex = (currentIndex + 1) % window.galleryImages.length;
-      showLightbox(currentIndex);
-    };
-    document.addEventListener('keydown', function (e) {
-      if (!lightbox.classList.contains('open')) return;
-      if (e.key === 'Escape') closeLightbox();
-      if (e.key === 'ArrowLeft') prevBtn.onclick();
-      if (e.key === 'ArrowRight') nextBtn.onclick();
-    });
-    lightbox.addEventListener('click', function (e) {
-      if (e.target === lightbox) closeLightbox();
-    });
-    // Swipe mobile per navigare
-    let startX = null;
-    lightboxImg.addEventListener('touchstart', function (e) {
-      startX = e.touches[0].clientX;
-    });
-    lightboxImg.addEventListener('touchend', function (e) {
-      if (startX === null) return;
-      const dx = e.changedTouches[0].clientX - startX;
-      if (Math.abs(dx) > 40) {
-        if (dx > 0) prevBtn.onclick();
-        else nextBtn.onclick();
-      }
-      startX = null;
-    });
-  </script>
+</div>
+<body>
+  <div class="background-grid"></div>
+
+<header id="header">
+    <nav class="container">
+            <a href="index.html" class="logo link-con-loader">LC<strong>25</strong></a>
+      <div class="nav-menu">
+        <a href="index.html#programma" class="nav-link link-con-loader">Programma</a>
+        <a href="index.html#gallery" class="nav-link link-con-loader">Edizioni Precedenti</a>
+        <a href="index.html#contatti" class="nav-link link-con-loader">Contatti</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+  <section id="gallery-section">
+  <h2 class="section-title">Galleria Fotografica 2025</h2>
+  <div class="grid-desc">Anteprime veloci: clicca per vedere/scaricare la foto originale!</div>
+  <script src="gallery.js"></script>
+  <div class="gallery__grid" id="gallery"></div>
+  <div class="pagination-wrap">
+    <button id="prevPage" class="btn-page">&laquo; Precedente</button>
+    <button id="nextPage" class="btn-page">Successiva &raquo;</button>
+  </div>
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-loader" id="lightboxLoader" style="display:none;">Caricamento...</div>
+    <button class="lightbox__close" id="closeBtn" aria-label="Chiudi">&times;</button>
+    <div style="display:flex; align-items:center; justify-content:center; gap:16px; margin:22px 0 0 0;">
+      <button id="prevBtn" aria-label="Precedente" class="lightbox-nav-btn">&#8592;</button>
+      <img id="lightboxImg" class="lightbox__image" src="" alt="Foto ingrandita" style="display:none"/>
+      <button id="nextBtn" aria-label="Successiva" class="lightbox-nav-btn">&#8594;</button>
+    </div>
+    <a id="downloadBtn" class="btn--primary download-btn" download>Scarica originale</a>
+  </div>
+
+  </main>
+
+<footer class="footer">
+  <div class="container">
+    <p>Lamezia Cuore © 2025 – Tutti i diritti riservati.</p>
+  </div>
+</footer>
+
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox__close" aria-label="Chiudi immagine">&times;</button>
+  <img src="" alt="Immagine ingrandita" class="lightbox__image">
+</div>
+
 </body>
 </html>

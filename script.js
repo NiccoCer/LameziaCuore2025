@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (diff <= 0) {
         clearInterval(timer);
-        countdownElem.innerHTML = `<p style="font-size:1.2rem; color:var(--c-accent-primary);">L'evento è iniziato!</p>`;
+        countdownElem.innerHTML = `<p style="font-size:1.2rem; color:var(--c-accent-primary);">L'evento è terminato!</p>`;
         return;
       }
 
